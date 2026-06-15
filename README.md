@@ -1,7 +1,7 @@
 # aring_osc — Ring Oscillator Synthesizer (Arty S7-50)
 
 **Projekt SDUP** — syntezator częstotliwości na **16 asynchronicznych pierścieniach LUT** w FPGA Spartan-7.  
-Sterowanie przez **UART** (MicroBlaze + terminal), pomiar w domenie **12 MHz**, wyjście na bufor scope.
+**Płytka:** Digilent **Arty S7-50** (XC7S50-CSGA324). Sterowanie przez **UART** (MicroBlaze + terminal), pomiar w domenie **12 MHz**, wyjście na bufor scope (nagłówek **JA**).
 
 **Autorzy:** A. Kowalczyk, K. Skalka  
 **Repo:** https://github.com/ardysk/ring_oscilator_arty-s7.git  
@@ -9,7 +9,7 @@ Sterowanie przez **UART** (MicroBlaze + terminal), pomiar w domenie **12 MHz**, 
 
 ---
 
-## Co to robi
+## Zasada działania
 
 1. W FPGA działa **16 niezależnych pierścieni** — każde oscyluje z inną prędkością (od ~100 MHz do ~300 kHz).
 2. Firmware **kalibruje** je (`CAL`) i zapisuje tabelę: bank → częstotliwość + słowo strojenia `tune`.
@@ -17,13 +17,67 @@ Sterowanie przez **UART** (MicroBlaze + terminal), pomiar w domenie **12 MHz**, 
 4. Komenda **`MEAS`** mierzy aktualną częstotliwość wyjścia (tryb ciągły do `Q`).
 5. Przełącznik **SW0 = ON** fizycznie włącza pierścienie w PL.
 
+Poniżej uproszczony schemat idei — jak sygnał przechodzi od pierścienia LUT przez multipleksery i dzielniki do pomiaru i wyjścia scope, oraz gdzie wchodzi UART:
+
+```mermaid
+flowchart TB
+  subgraph HOST["Komputer"]
+    TERM["Terminal UART<br/>9600 8N1 · COM13"]
+  end
+
+  subgraph BOARD["Płytka Digilent Arty S7-50 · XC7S50-CSGA324"]
+    UART["USB-UART"]
+    subgraph PS["MicroBlaze + firmware V1"]
+      CLI["CAL · SET · MEAS · BANK"]
+    end
+    AXI["Rejestry AXI CSR<br/>RO_EN · BANK · TUNE · DIV · GATE"]
+
+    subgraph PL["Logika programowalna PL"]
+      SW0["SW0 = ON<br/>włącza pierścienie"]
+
+      subgraph RO_RING["Jeden bank pierścienia LUT — idea"]
+        direction TB
+        N1["LUT inv"] --> N2["LUT inv"]
+        N2 --> MUX["MUX strojenia<br/>tune_sel wybiera<br/>krótszą / dłuższą ścieżkę"]
+        MUX --> N3["LUT inv"]
+        N3 --> N1
+      end
+
+      subgraph BANKS["16 banków równolegle"]
+        B_FAST["B1–B11: tunable<br/>pierścienie + MUX"]
+        B_SLOW["B12–B16: długi łańcuch<br/>601× inv + /64"]
+      end
+
+      BMUX["MUX banku<br/>wybór B1…B16"]
+      DIV["Dzielnik programowalny<br/>min. /2 na wyjściu"]
+      PRE["Preskaler pomiaru<br/>per-bank"]
+      MEAS["Licznik f @ 12 MHz<br/>okno GATE ≈ 5 ms"]
+      SCOPE["Bufor wyjściowy<br/>ro_scope → JA"]
+
+      RO_RING -.->|"×16 wariantów"| BANKS
+      SW0 --> BANKS
+      BANKS --> BMUX
+      BMUX --> DIV
+      DIV --> SCOPE
+      BMUX --> PRE --> MEAS
+    end
+  end
+
+  TERM <-->|"komendy / wyniki"| UART
+  UART <--> CLI
+  CLI <--> AXI
+  AXI --> PL
+  MEAS --> AXI
+  SCOPE --> JA["Pin JA<br/>oscyloskop"]
+```
+
 ---
 
 ## Sprzęt
 
 | Element | Wartość |
 |---------|---------|
-| Płytka | Digilent **Arty S7-50** (XC7S50-CSGA324) |
+| Płytka docelowa | Digilent **Arty S7-50** — FPGA **XC7S50-CSGA324** |
 | Zegar systemowy | 12 MHz |
 | UART | USB-UART, typowo **COM13**, **9600 8N1** |
 | Włączenie RO | przełącznik **SW0 = ON** |
