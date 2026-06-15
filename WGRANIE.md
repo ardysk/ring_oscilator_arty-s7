@@ -2,7 +2,13 @@
 
 ```powershell
 cd C:\Users\HP\Downloads\csd_lab6\ring_oscilator_spartan7
-.\scripts\flash_board.ps1
+.\scripts\flash_and_uart.ps1
+```
+
+Git Bash:
+
+```bash
+./scripts/flash_and_uart.sh
 ```
 
 Wymagania:
