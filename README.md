@@ -7,6 +7,8 @@
 **Repo:** https://github.com/ardysk/ring_oscilator_arty-s7.git  
 **Wersja aktywna:** V1 UART (`main`)
 
+**Interaktywne schematy Vivado (SVG):** [otworz viewer](docs/vivado_schematics/index.html) · [GitHub Pages](https://ardysk.github.io/ring_oscilator_arty-s7/vivado_schematics/index.html) *(wlacz Pages: Settings → Pages → branch `main`, folder `/docs`)*
+
 ---
 
 ## Zasada działania
