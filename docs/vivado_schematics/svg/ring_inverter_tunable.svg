@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 4067 220"
+     clip="0 4067 220 0"
+     preserveAspectRatio="xMidYMid meet"
+     version="1.1"
+     baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"
+     xml:space="preserve">
+<title>ring_inverter_tunable</title>
+<desc>Nlview schematic (SVG)</desc>
+<clipPath id="clippingbbox">
+<rect x="0" y="0" width="4067" height="220" />
+</clipPath>
+<g stroke="#19b400"
+   stroke-width="1"
+   stroke-linecap="butt"
+   stroke-linejoin="miter"
+   stroke-miterlimit="4"
+   stroke-dasharray="none"
+   stroke-dashoffset="0"
+   fill="none"
+   font-family="Helvetica"
+   font-style="normal"
+   font-size="12"
+   writing-mode="lr-tb"
+   cursor="crosshair"
+   clip-path="url(#clippingbbox)">
+<path d="M0 0h4066v221h-4066z" stroke="none" fill="white" />
+<g stroke="black">
+<path d="M128 70l-7 7h-14v-14h14z" />
+<text x="103" y="70" fill="black" stroke-width="0" text-anchor="end" dy="3.85">en</text>
+</g>
+<g stroke="black" stroke-width="3">
+<path d="M128 180l-7 7h-14v-14h14z" />
+<text x="103" y="180" fill="black" stroke-width="0" text-anchor="end" dy="3.85">tune_sel[3:0]</text>
+<path d="M168 70v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+</g>
+<g stroke="black">
+<path d="M168 70v-12l30 12l-30 12z" />
+<text x="170" y="56" fill="black" stroke-width="0">en_IBUF_inst</text>
+<text x="170" y="84" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M208 70h-10" />
+<text x="200" y="69" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M158 70h10" />
+<text x="166" y="69" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M338 40h60v40h-60z" stroke="none" fill="#ffffcc" />
+<path d="M338 40h60v40h-60z" />
+<text x="368" y="38" fill="black" stroke-width="0" text-anchor="middle">mid_inferred_i_1</text>
+<text x="368" y="82" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT2</text>
+<path d="M408 50h-10" />
+<text x="396" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M328 50h10" />
+<text x="340" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M328 70h10" />
+<text x="340" y="70" fill="black" stroke-width="0" font-size="10" dy="3.25">I1</text>
+<path d="M458 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M458 40h60v20h-60z" />
+<text x="488" y="38" fill="black" stroke-width="0" text-anchor="middle">i_0</text>
+<text x="488" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M528 50h-10" />
+<text x="516" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M448 50h10" />
+<text x="460" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M628 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M628 40h60v20h-60z" />
+<text x="658" y="38" fill="black" stroke-width="0" text-anchor="middle">g_tune[0].d1_inferred_i_1</text>
+<text x="658" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M698 50h-10" />
+<text x="686" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M618 50h10" />
+<text x="630" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M848 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M848 40h60v20h-60z" />
+<text x="878" y="38" fill="black" stroke-width="0" text-anchor="middle">g_tune[0].d2_inferred_i_1</text>
+<text x="878" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M918 50h-10" />
+<text x="906" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M838 50h10" />
+<text x="850" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M848 120v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M848 120v-12l30 12l-30 12z" />
+<text x="850" y="106" fill="black" stroke-width="0">tune_sel_IBUF[0]_inst</text>
+<text x="850" y="134" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M888 120h-10" />
+<text x="880" y="119" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M838 120h10" />
+<text x="846" y="119" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M1078 90h60v60h-60z" stroke="none" fill="#ffffcc" />
+<path d="M1078 90h60v60h-60z" />
+<text x="1108" y="88" fill="black" stroke-width="0" text-anchor="middle">tnode_inferred_i_4</text>
+<text x="1108" y="152" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT3</text>
+<path d="M1148 120h-10" />
+<text x="1136" y="120" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M1068 100h10" />
+<text x="1080" y="100" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M1068 120h10" />
+<text x="1080" y="120" fill="black" stroke-width="0" font-size="10" dy="3.25">I1</text>
+<path d="M1068 140h10" />
+<text x="1080" y="140" fill="black" stroke-width="0" font-size="10" dy="3.25">I2</text>
+<path d="M1278 60h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M1278 60h60v20h-60z" />
+<text x="1308" y="58" fill="black" stroke-width="0" text-anchor="middle">g_tune[1].d1_inferred_i_1</text>
+<text x="1308" y="82" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M1348 70h-10" />
+<text x="1336" y="70" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M1268 70h10" />
+<text x="1280" y="70" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M1498 60h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M1498 60h60v20h-60z" />
+<text x="1528" y="58" fill="black" stroke-width="0" text-anchor="middle">g_tune[1].d2_inferred_i_1</text>
+<text x="1528" y="82" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M1568 70h-10" />
+<text x="1556" y="70" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M1488 70h10" />
+<text x="1500" y="70" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M1498 150v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M1498 150v-12l30 12l-30 12z" />
+<text x="1500" y="136" fill="black" stroke-width="0">tune_sel_IBUF[1]_inst</text>
+<text x="1500" y="164" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M1538 150h-10" />
+<text x="1530" y="149" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M1488 150h10" />
+<text x="1496" y="149" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M1768 100h60v60h-60z" stroke="none" fill="#ffffcc" />
+<path d="M1768 100h60v60h-60z" />
+<text x="1798" y="98" fill="black" stroke-width="0" text-anchor="middle">tnode_inferred_i_3</text>
+<text x="1798" y="162" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT3</text>
+<path d="M1838 130h-10" />
+<text x="1826" y="130" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M1758 110h10" />
+<text x="1770" y="110" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M1758 130h10" />
+<text x="1770" y="130" fill="black" stroke-width="0" font-size="10" dy="3.25">I1</text>
+<path d="M1758 150h10" />
+<text x="1770" y="150" fill="black" stroke-width="0" font-size="10" dy="3.25">I2</text>
+<path d="M1968 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M1968 40h60v20h-60z" />
+<text x="1998" y="38" fill="black" stroke-width="0" text-anchor="middle">g_tune[2].d1_inferred_i_1</text>
+<text x="1998" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M2038 50h-10" />
+<text x="2026" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M1958 50h10" />
+<text x="1970" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M2188 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M2188 40h60v20h-60z" />
+<text x="2218" y="38" fill="black" stroke-width="0" text-anchor="middle">g_tune[2].d2_inferred_i_1</text>
+<text x="2218" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M2258 50h-10" />
+<text x="2246" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M2178 50h10" />
+<text x="2190" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M2188 120v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M2188 120v-12l30 12l-30 12z" />
+<text x="2190" y="106" fill="black" stroke-width="0">tune_sel_IBUF[2]_inst</text>
+<text x="2190" y="134" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M2228 120h-10" />
+<text x="2220" y="119" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M2178 120h10" />
+<text x="2186" y="119" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M2418 90h60v60h-60z" stroke="none" fill="#ffffcc" />
+<path d="M2418 90h60v60h-60z" />
+<text x="2448" y="88" fill="black" stroke-width="0" text-anchor="middle">tnode_inferred_i_2</text>
+<text x="2448" y="152" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT3</text>
+<path d="M2488 120h-10" />
+<text x="2476" y="120" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M2408 100h10" />
+<text x="2420" y="100" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M2408 120h10" />
+<text x="2420" y="120" fill="black" stroke-width="0" font-size="10" dy="3.25">I1</text>
+<path d="M2408 140h10" />
+<text x="2420" y="140" fill="black" stroke-width="0" font-size="10" dy="3.25">I2</text>
+<path d="M2618 90h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M2618 90h60v20h-60z" />
+<text x="2648" y="88" fill="black" stroke-width="0" text-anchor="middle">g_tune[3].d1_inferred_i_1</text>
+<text x="2648" y="112" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M2688 100h-10" />
+<text x="2676" y="100" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M2608 100h10" />
+<text x="2620" y="100" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M2838 90h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M2838 90h60v20h-60z" />
+<text x="2868" y="88" fill="black" stroke-width="0" text-anchor="middle">g_tune[3].d2_inferred_i_1</text>
+<text x="2868" y="112" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M2908 100h-10" />
+<text x="2896" y="100" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M2828 100h10" />
+<text x="2840" y="100" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M2838 180v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M2838 180v-12l30 12l-30 12z" />
+<text x="2840" y="166" fill="black" stroke-width="0">tune_sel_IBUF[3]_inst</text>
+<text x="2840" y="194" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M2878 180h-10" />
+<text x="2870" y="179" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M2828 180h10" />
+<text x="2836" y="179" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M3068 90h60v60h-60z" stroke="none" fill="#ffffcc" />
+<path d="M3068 90h60v60h-60z" />
+<text x="3098" y="88" fill="black" stroke-width="0" text-anchor="middle">tnode_inferred_i_1</text>
+<text x="3098" y="152" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT3</text>
+<path d="M3138 120h-10" />
+<text x="3126" y="120" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M3058 100h10" />
+<text x="3070" y="100" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M3058 120h10" />
+<text x="3070" y="120" fill="black" stroke-width="0" font-size="10" dy="3.25">I1</text>
+<path d="M3058 140h10" />
+<text x="3070" y="140" fill="black" stroke-width="0" font-size="10" dy="3.25">I2</text>
+<path d="M3198 110h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M3198 110h60v20h-60z" />
+<text x="3228" y="108" fill="black" stroke-width="0" text-anchor="middle">i_1</text>
+<text x="3228" y="132" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M3268 120h-10" />
+<text x="3256" y="120" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M3188 120h10" />
+<text x="3200" y="120" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M3348 110h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M3348 110h60v20h-60z" />
+<text x="3378" y="108" fill="black" stroke-width="0" text-anchor="middle">g_tail_inv.tailv_inferred_i_2</text>
+<text x="3378" y="132" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M3418 120h-10" />
+<text x="3406" y="120" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M3338 120h10" />
+<text x="3350" y="120" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M3548 110h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M3548 110h60v20h-60z" />
+<text x="3578" y="108" fill="black" stroke-width="0" text-anchor="middle">g_tail_inv.tailv_inferred_i_1</text>
+<text x="3578" y="132" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M3618 120h-10" />
+<text x="3606" y="120" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M3538 120h10" />
+<text x="3550" y="120" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M3698 110h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M3698 110h60v20h-60z" />
+<text x="3728" y="108" fill="black" stroke-width="0" text-anchor="middle">i_2</text>
+<text x="3728" y="132" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M3768 120h-10" />
+<text x="3756" y="120" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M3688 120h10" />
+<text x="3700" y="120" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M3828 40v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M3828 40v-12l30 12l-30 12z" />
+<text x="3830" y="26" fill="black" stroke-width="0">ro_out_OBUF_inst</text>
+<text x="3830" y="54" fill="black" stroke-width="0" dy="7.7">OBUF</text>
+<path d="M3868 40h-10" />
+<text x="3860" y="39" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M3818 40h10" />
+<text x="3826" y="39" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M3978 40v-7h14l7 7l-7 7h-14z" />
+<text x="4003" y="40" fill="black" stroke-width="0" dy="3.85">ro_out</text>
+</g>
+<g stroke="green" stroke-width="3">
+<path d="M128 180h640" />
+<path d="M765 177h7v7h-7z" stroke="none" fill="green" />
+<path d="M768 117v63h650" />
+<path d="M1415 177h7v7h-7z" stroke="none" fill="green" />
+<path d="M1418 147v43h690v-73" />
+<path d="M2108 180h650" />
+<path d="M2105 177h7v7h-7z" stroke="none" fill="green" />
+<path d="M2758 177v6" />
+</g>
+<g>
+<path d="M768 120h70" />
+<path d="M2758 180h70" />
+<path d="M1418 150h70" />
+<path d="M2108 120h70" />
+</g>
+<g stroke="black" stroke-width="3">
+<path d="M767 115v10l11 -5" stroke="none" fill="black" />
+<path d="M1417 145v10l11 -5" stroke="none" fill="black" />
+<path d="M2757 175v10l11 -5" stroke="none" fill="black" />
+<path d="M2107 115v10l11 -5" stroke="none" fill="black" />
+</g>
+<g>
+<path d="M128 70h30" />
+<path d="M208 70h120" />
+<path d="M328 50h-40v-40h3500v110h-20" />
+<path d="M3788 40h30" />
+<path d="M3786 38h5v5h-5z" stroke="none" fill="#19b400" />
+<path d="M3268 120h70" />
+<path d="M3418 120h120" />
+<path d="M3618 120h70" />
+<path d="M698 50h140" />
+<path d="M918 50h100v50h50" />
+<path d="M1348 70h140" />
+<path d="M1568 70h140v40h50" />
+<path d="M2038 50h140" />
+<path d="M2258 50h100v50h50" />
+<path d="M2688 100h140" />
+<path d="M2908 100h150" />
+<path d="M408 50h40" />
+<path d="M3868 40h110" />
+<path d="M528 50h20v110h470v-20h50" />
+<path d="M548 50h70" />
+<path d="M546 48h5v5h-5z" stroke="none" fill="#19b400" />
+<path d="M1148 120h50v-50h70" />
+<path d="M1198 110h490v40h70" />
+<path d="M1196 108h5v5h-5z" stroke="none" fill="#19b400" />
+<path d="M1958 50h-70v110h470v-20h50" />
+<path d="M1838 130h50" />
+<path d="M1886 128h5v5h-5z" stroke="none" fill="#19b400" />
+<path d="M2608 100h-70v40h520" />
+<path d="M2488 120h50" />
+<path d="M2536 118h5v5h-5z" stroke="none" fill="#19b400" />
+<path d="M3138 120h50" />
+<path d="M888 120h180" />
+<path d="M1538 150h130v-20h90" />
+<path d="M2228 120h180" />
+<path d="M2878 180h130v-60h50" />
+<text x="774" y="119" fill="black" stroke-width="0" font-size="8">0</text>
+<text x="1424" y="149" fill="black" stroke-width="0" font-size="8">1</text>
+<text x="2114" y="119" fill="black" stroke-width="0" font-size="8">2</text>
+<text x="2764" y="179" fill="black" stroke-width="0" font-size="8">3</text>
+</g>
+</g>
+</svg>

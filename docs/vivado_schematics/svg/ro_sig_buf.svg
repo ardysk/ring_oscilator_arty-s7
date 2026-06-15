@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 638 80"
+     clip="0 638 80 0"
+     preserveAspectRatio="xMidYMid meet"
+     version="1.1"
+     baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"
+     xml:space="preserve">
+<title>ro_sig_buf</title>
+<desc>Nlview schematic (SVG)</desc>
+<clipPath id="clippingbbox">
+<rect x="0" y="0" width="638" height="80" />
+</clipPath>
+<g stroke="#19b400"
+   stroke-width="1"
+   stroke-linecap="butt"
+   stroke-linejoin="miter"
+   stroke-miterlimit="4"
+   stroke-dasharray="none"
+   stroke-dashoffset="0"
+   fill="none"
+   font-family="Helvetica"
+   font-style="normal"
+   font-size="12"
+   writing-mode="lr-tb"
+   cursor="crosshair"
+   clip-path="url(#clippingbbox)">
+<path d="M0 0h638v81h-638z" stroke="none" fill="white" />
+<g stroke="black">
+<path d="M84 40l-7 7h-14v-14h14z" />
+<text x="59" y="40" fill="black" stroke-width="0" text-anchor="end" dy="3.85">sig_in</text>
+<path d="M124 40v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M124 40v-12l30 12l-30 12z" />
+<text x="126" y="26" fill="black" stroke-width="0">sig_in_IBUF_inst</text>
+<text x="126" y="54" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M164 40h-10" />
+<text x="156" y="39" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M114 40h10" />
+<text x="122" y="39" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M284 40v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M284 40v-12l30 12l-30 12z" />
+<text x="286" y="26" fill="black" stroke-width="0">u_bufg</text>
+<text x="286" y="54" fill="black" stroke-width="0" dy="7.7">BUFG</text>
+<path d="M324 40h-10" />
+<text x="316" y="39" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M274 40h10" />
+<text x="282" y="39" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M384 40v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M384 40v-12l30 12l-30 12z" />
+<text x="386" y="26" fill="black" stroke-width="0">sig_out_OBUF_inst</text>
+<text x="386" y="54" fill="black" stroke-width="0" dy="7.7">OBUF</text>
+<path d="M424 40h-10" />
+<text x="416" y="39" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M374 40h10" />
+<text x="382" y="39" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M544 40v-7h14l7 7l-7 7h-14z" />
+<text x="569" y="40" fill="black" stroke-width="0" dy="3.85">sig_out</text>
+</g>
+<g>
+<path d="M84 40h30" />
+<path d="M164 40h110" />
+<path d="M424 40h120" />
+<path d="M324 40h50" />
+</g>
+</g>
+</svg>

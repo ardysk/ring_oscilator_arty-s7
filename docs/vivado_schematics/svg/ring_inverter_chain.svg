@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 2943 110"
+     clip="0 2943 110 0"
+     preserveAspectRatio="xMidYMid meet"
+     version="1.1"
+     baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"
+     xml:space="preserve">
+<title>ring_inverter_chain</title>
+<desc>Nlview schematic (SVG)</desc>
+<clipPath id="clippingbbox">
+<rect x="0" y="0" width="2943" height="110" />
+</clipPath>
+<g stroke="#19b400"
+   stroke-width="1"
+   stroke-linecap="butt"
+   stroke-linejoin="miter"
+   stroke-miterlimit="4"
+   stroke-dasharray="none"
+   stroke-dashoffset="0"
+   fill="none"
+   font-family="Helvetica"
+   font-style="normal"
+   font-size="12"
+   writing-mode="lr-tb"
+   cursor="crosshair"
+   clip-path="url(#clippingbbox)">
+<path d="M0 0h2942v111h-2942z" stroke="none" fill="white" />
+<g stroke="black">
+<path d="M64 70l-7 7h-14v-14h14z" />
+<text x="39" y="70" fill="black" stroke-width="0" text-anchor="end" dy="3.85">en</text>
+<path d="M104 70v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M104 70v-12l30 12l-30 12z" />
+<text x="106" y="56" fill="black" stroke-width="0">en_IBUF_inst</text>
+<text x="106" y="84" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M144 70h-10" />
+<text x="136" y="69" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M94 70h10" />
+<text x="102" y="69" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M304 40h60v40h-60z" stroke="none" fill="#ffffcc" />
+<path d="M304 40h60v40h-60z" />
+<text x="334" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_13</text>
+<text x="334" y="82" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT2</text>
+<path d="M374 50h-10" />
+<text x="362" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M294 50h10" />
+<text x="306" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M294 70h10" />
+<text x="306" y="70" fill="black" stroke-width="0" font-size="10" dy="3.25">I1</text>
+<path d="M504 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M504 40h60v20h-60z" />
+<text x="534" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_12</text>
+<text x="534" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M574 50h-10" />
+<text x="562" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M494 50h10" />
+<text x="506" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M704 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M704 40h60v20h-60z" />
+<text x="734" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_11</text>
+<text x="734" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M774 50h-10" />
+<text x="762" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M694 50h10" />
+<text x="706" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M904 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M904 40h60v20h-60z" />
+<text x="934" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_10</text>
+<text x="934" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M974 50h-10" />
+<text x="962" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M894 50h10" />
+<text x="906" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M1094 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M1094 40h60v20h-60z" />
+<text x="1124" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_9</text>
+<text x="1124" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M1164 50h-10" />
+<text x="1152" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M1084 50h10" />
+<text x="1096" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M1274 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M1274 40h60v20h-60z" />
+<text x="1304" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_8</text>
+<text x="1304" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M1344 50h-10" />
+<text x="1332" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M1264 50h10" />
+<text x="1276" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M1454 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M1454 40h60v20h-60z" />
+<text x="1484" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_7</text>
+<text x="1484" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M1524 50h-10" />
+<text x="1512" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M1444 50h10" />
+<text x="1456" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M1634 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M1634 40h60v20h-60z" />
+<text x="1664" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_6</text>
+<text x="1664" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M1704 50h-10" />
+<text x="1692" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M1624 50h10" />
+<text x="1636" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M1814 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M1814 40h60v20h-60z" />
+<text x="1844" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_5</text>
+<text x="1844" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M1884 50h-10" />
+<text x="1872" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M1804 50h10" />
+<text x="1816" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M1994 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M1994 40h60v20h-60z" />
+<text x="2024" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_4</text>
+<text x="2024" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M2064 50h-10" />
+<text x="2052" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M1984 50h10" />
+<text x="1996" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M2174 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M2174 40h60v20h-60z" />
+<text x="2204" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_3</text>
+<text x="2204" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M2244 50h-10" />
+<text x="2232" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M2164 50h10" />
+<text x="2176" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M2354 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M2354 40h60v20h-60z" />
+<text x="2384" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_2</text>
+<text x="2384" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M2424 50h-10" />
+<text x="2412" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M2344 50h10" />
+<text x="2356" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M2534 40h60v20h-60z" stroke="none" fill="#ffffcc" />
+<path d="M2534 40h60v20h-60z" />
+<text x="2564" y="38" fill="black" stroke-width="0" text-anchor="middle">ring_node_inferred_i_1</text>
+<text x="2564" y="62" fill="black" stroke-width="0" text-anchor="middle" dy="7.7">LUT1</text>
+<path d="M2604 50h-10" />
+<text x="2592" y="50" fill="black" stroke-width="0" font-size="10" text-anchor="end" dy="3.25">O</text>
+<path d="M2524 50h10" />
+<text x="2536" y="50" fill="black" stroke-width="0" font-size="10" dy="3.25">I0</text>
+<path d="M2704 40v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M2704 40v-12l30 12l-30 12z" />
+<text x="2706" y="26" fill="black" stroke-width="0">ro_out_OBUF_inst</text>
+<text x="2706" y="54" fill="black" stroke-width="0" dy="7.7">OBUF</text>
+<path d="M2744 40h-10" />
+<text x="2736" y="39" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M2694 40h10" />
+<text x="2702" y="39" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M2854 40v-7h14l7 7l-7 7h-14z" />
+<text x="2879" y="40" fill="black" stroke-width="0" dy="3.85">ro_out</text>
+</g>
+<g>
+<path d="M64 70h30" />
+<path d="M144 70h150" />
+<path d="M374 50h120" />
+<path d="M574 50h120" />
+<path d="M774 50h120" />
+<path d="M974 50h110" />
+<path d="M1164 50h100" />
+<path d="M1344 50h100" />
+<path d="M1524 50h100" />
+<path d="M1704 50h100" />
+<path d="M1884 50h100" />
+<path d="M2064 50h100" />
+<path d="M2244 50h100" />
+<path d="M2424 50h100" />
+<path d="M294 50h-70v-40h2440v40h-60" />
+<path d="M2664 40h30" />
+<path d="M2662 38h5v5h-5z" stroke="none" fill="#19b400" />
+<path d="M2744 40h110" />
+</g>
+</g>
+</svg>

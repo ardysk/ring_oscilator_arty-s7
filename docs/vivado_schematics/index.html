@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>aring_osc — Vivado schematics (interaktywne)</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="title">aring_osc V1</div>
+      <div class="subtitle">Vivado schematics → klik/hover</div>
+    </div>
+
+    <div class="hint">
+      To są <strong>schematy wygenerowane przez Vivado</strong> (SVG z <code>write_schematic</code>).
+      Klikaj nazwy bloków/instancji na schemacie albo wybierz z listy.
+    </div>
+
+    <div class="controls">
+      <button id="btnTop">Top: ro_top_arty_axi</button>
+      <button id="btnReset" class="secondary">Reset widoku</button>
+    </div>
+
+    <div class="search">
+      <input id="q" type="search" placeholder="Szukaj bloku (np. ro_freq_measure)..." />
+    </div>
+
+    <div id="list" class="list"></div>
+  </aside>
+
+  <main class="main">
+    <div class="meta">
+      <div>
+        <div id="mTitle" class="mTitle"></div>
+        <div id="mFile" class="mFile"></div>
+      </div>
+      <div id="mDesc" class="mDesc"></div>
+    </div>
+
+    <div class="stage">
+      <div id="svgWrap" class="svgWrap"></div>
+      <div id="tooltip" class="tooltip" style="display:none;"></div>
+    </div>
+  </main>
+
+  <script src="./data.js"></script>
+  <script src="./viewer.js"></script>
+</body>
+</html>
+

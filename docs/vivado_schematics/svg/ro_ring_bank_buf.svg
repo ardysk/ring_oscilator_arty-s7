@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 847 570"
+     clip="0 847 570 0"
+     preserveAspectRatio="xMidYMid meet"
+     version="1.1"
+     baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"
+     xml:space="preserve">
+<title>ro_ring_bank_buf</title>
+<desc>Nlview schematic (SVG)</desc>
+<clipPath id="clippingbbox">
+<rect x="0" y="0" width="847" height="570" />
+</clipPath>
+<g stroke="#19b400"
+   stroke-width="1"
+   stroke-linecap="butt"
+   stroke-linejoin="miter"
+   stroke-miterlimit="4"
+   stroke-dasharray="none"
+   stroke-dashoffset="0"
+   fill="none"
+   font-family="Helvetica"
+   font-style="normal"
+   font-size="12"
+   writing-mode="lr-tb"
+   cursor="crosshair"
+   clip-path="url(#clippingbbox)">
+<path d="M0 0h846v571h-846z" stroke="none" fill="white" />
+<g stroke="black" stroke-width="3">
+<path d="M119 40l-7 7h-14v-14h14z" />
+<text x="94" y="40" fill="black" stroke-width="0" text-anchor="end" dy="3.85">ring_in[7:0]</text>
+<path d="M179 40v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+</g>
+<g stroke="black">
+<path d="M179 40v-12l30 12l-30 12z" />
+<text x="181" y="26" fill="black" stroke-width="0">ring_in_IBUF[0]_inst</text>
+<text x="181" y="54" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M219 40h-10" />
+<text x="211" y="39" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M169 40h10" />
+<text x="177" y="39" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M179 110v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M179 110v-12l30 12l-30 12z" />
+<text x="181" y="96" fill="black" stroke-width="0">ring_in_IBUF[1]_inst</text>
+<text x="181" y="124" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M219 110h-10" />
+<text x="211" y="109" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M169 110h10" />
+<text x="177" y="109" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M179 180v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M179 180v-12l30 12l-30 12z" />
+<text x="181" y="166" fill="black" stroke-width="0">ring_in_IBUF[2]_inst</text>
+<text x="181" y="194" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M219 180h-10" />
+<text x="211" y="179" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M169 180h10" />
+<text x="177" y="179" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M179 250v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M179 250v-12l30 12l-30 12z" />
+<text x="181" y="236" fill="black" stroke-width="0">ring_in_IBUF[3]_inst</text>
+<text x="181" y="264" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M219 250h-10" />
+<text x="211" y="249" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M169 250h10" />
+<text x="177" y="249" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M179 320v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M179 320v-12l30 12l-30 12z" />
+<text x="181" y="306" fill="black" stroke-width="0">ring_in_IBUF[4]_inst</text>
+<text x="181" y="334" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M219 320h-10" />
+<text x="211" y="319" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M169 320h10" />
+<text x="177" y="319" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M179 390v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M179 390v-12l30 12l-30 12z" />
+<text x="181" y="376" fill="black" stroke-width="0">ring_in_IBUF[5]_inst</text>
+<text x="181" y="404" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M219 390h-10" />
+<text x="211" y="389" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M169 390h10" />
+<text x="177" y="389" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M179 460v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M179 460v-12l30 12l-30 12z" />
+<text x="181" y="446" fill="black" stroke-width="0">ring_in_IBUF[6]_inst</text>
+<text x="181" y="474" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M219 460h-10" />
+<text x="211" y="459" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M169 460h10" />
+<text x="177" y="459" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M179 530v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M179 530v-12l30 12l-30 12z" />
+<text x="181" y="516" fill="black" stroke-width="0">ring_in_IBUF[7]_inst</text>
+<text x="181" y="544" fill="black" stroke-width="0" dy="7.7">IBUF</text>
+<path d="M219 530h-10" />
+<text x="211" y="529" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M169 530h10" />
+<text x="177" y="529" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M359 40v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M359 40v-12l30 12l-30 12z" />
+<text x="361" y="26" fill="black" stroke-width="0">g_buf[0].u_bufg</text>
+<text x="361" y="54" fill="black" stroke-width="0" dy="7.7">BUFG</text>
+<path d="M399 40h-10" />
+<text x="391" y="39" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M349 40h10" />
+<text x="357" y="39" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M359 110v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M359 110v-12l30 12l-30 12z" />
+<text x="361" y="96" fill="black" stroke-width="0">g_buf[1].u_bufg</text>
+<text x="361" y="124" fill="black" stroke-width="0" dy="7.7">BUFG</text>
+<path d="M399 110h-10" />
+<text x="391" y="109" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M349 110h10" />
+<text x="357" y="109" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M359 180v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M359 180v-12l30 12l-30 12z" />
+<text x="361" y="166" fill="black" stroke-width="0">g_buf[2].u_bufg</text>
+<text x="361" y="194" fill="black" stroke-width="0" dy="7.7">BUFG</text>
+<path d="M399 180h-10" />
+<text x="391" y="179" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M349 180h10" />
+<text x="357" y="179" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M359 250v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M359 250v-12l30 12l-30 12z" />
+<text x="361" y="236" fill="black" stroke-width="0">g_buf[3].u_bufg</text>
+<text x="361" y="264" fill="black" stroke-width="0" dy="7.7">BUFG</text>
+<path d="M399 250h-10" />
+<text x="391" y="249" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M349 250h10" />
+<text x="357" y="249" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M359 320v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M359 320v-12l30 12l-30 12z" />
+<text x="361" y="306" fill="black" stroke-width="0">g_buf[4].u_bufg</text>
+<text x="361" y="334" fill="black" stroke-width="0" dy="7.7">BUFG</text>
+<path d="M399 320h-10" />
+<text x="391" y="319" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M349 320h10" />
+<text x="357" y="319" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M359 390v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M359 390v-12l30 12l-30 12z" />
+<text x="361" y="376" fill="black" stroke-width="0">g_buf[5].u_bufg</text>
+<text x="361" y="404" fill="black" stroke-width="0" dy="7.7">BUFG</text>
+<path d="M399 390h-10" />
+<text x="391" y="389" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M349 390h10" />
+<text x="357" y="389" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M359 460v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M359 460v-12l30 12l-30 12z" />
+<text x="361" y="446" fill="black" stroke-width="0">g_buf[6].u_bufg</text>
+<text x="361" y="474" fill="black" stroke-width="0" dy="7.7">BUFG</text>
+<path d="M399 460h-10" />
+<text x="391" y="459" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M349 460h10" />
+<text x="357" y="459" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M359 530v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M359 530v-12l30 12l-30 12z" />
+<text x="361" y="516" fill="black" stroke-width="0">g_buf[7].u_bufg</text>
+<text x="361" y="544" fill="black" stroke-width="0" dy="7.7">BUFG</text>
+<path d="M399 530h-10" />
+<text x="391" y="529" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M349 530h10" />
+<text x="357" y="529" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M519 40v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M519 40v-12l30 12l-30 12z" />
+<text x="521" y="26" fill="black" stroke-width="0">ring_buf_OBUF[0]_inst</text>
+<text x="521" y="54" fill="black" stroke-width="0" dy="7.7">OBUF</text>
+<path d="M559 40h-10" />
+<text x="551" y="39" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M509 40h10" />
+<text x="517" y="39" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M519 110v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M519 110v-12l30 12l-30 12z" />
+<text x="521" y="96" fill="black" stroke-width="0">ring_buf_OBUF[1]_inst</text>
+<text x="521" y="124" fill="black" stroke-width="0" dy="7.7">OBUF</text>
+<path d="M559 110h-10" />
+<text x="551" y="109" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M509 110h10" />
+<text x="517" y="109" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M519 180v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M519 180v-12l30 12l-30 12z" />
+<text x="521" y="166" fill="black" stroke-width="0">ring_buf_OBUF[2]_inst</text>
+<text x="521" y="194" fill="black" stroke-width="0" dy="7.7">OBUF</text>
+<path d="M559 180h-10" />
+<text x="551" y="179" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M509 180h10" />
+<text x="517" y="179" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M519 250v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M519 250v-12l30 12l-30 12z" />
+<text x="521" y="236" fill="black" stroke-width="0">ring_buf_OBUF[3]_inst</text>
+<text x="521" y="264" fill="black" stroke-width="0" dy="7.7">OBUF</text>
+<path d="M559 250h-10" />
+<text x="551" y="249" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M509 250h10" />
+<text x="517" y="249" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M519 320v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M519 320v-12l30 12l-30 12z" />
+<text x="521" y="306" fill="black" stroke-width="0">ring_buf_OBUF[4]_inst</text>
+<text x="521" y="334" fill="black" stroke-width="0" dy="7.7">OBUF</text>
+<path d="M559 320h-10" />
+<text x="551" y="319" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M509 320h10" />
+<text x="517" y="319" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M519 390v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M519 390v-12l30 12l-30 12z" />
+<text x="521" y="376" fill="black" stroke-width="0">ring_buf_OBUF[5]_inst</text>
+<text x="521" y="404" fill="black" stroke-width="0" dy="7.7">OBUF</text>
+<path d="M559 390h-10" />
+<text x="551" y="389" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M509 390h10" />
+<text x="517" y="389" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M519 460v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M519 460v-12l30 12l-30 12z" />
+<text x="521" y="446" fill="black" stroke-width="0">ring_buf_OBUF[6]_inst</text>
+<text x="521" y="474" fill="black" stroke-width="0" dy="7.7">OBUF</text>
+<path d="M559 460h-10" />
+<text x="551" y="459" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M509 460h10" />
+<text x="517" y="459" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+<path d="M519 530v-12l30 12l-30 12z" stroke="none" fill="#ffffcc" />
+<path d="M519 530v-12l30 12l-30 12z" />
+<text x="521" y="516" fill="black" stroke-width="0">ring_buf_OBUF[7]_inst</text>
+<text x="521" y="544" fill="black" stroke-width="0" dy="7.7">OBUF</text>
+<path d="M559 530h-10" />
+<text x="551" y="529" fill="black" stroke-width="0" font-size="10">O</text>
+<path d="M509 530h10" />
+<text x="517" y="529" fill="black" stroke-width="0" font-size="10" text-anchor="end">I</text>
+</g>
+<g stroke="black" stroke-width="3">
+<path d="M719 40v-7h14l7 7l-7 7h-14z" />
+<text x="744" y="40" fill="black" stroke-width="0" dy="3.85">ring_buf[7:0]</text>
+</g>
+<g stroke="green" stroke-width="3">
+<path d="M699 37v496" />
+<path d="M699 40h20" />
+</g>
+<g>
+<path d="M559 40h140" />
+<path d="M559 110h140" />
+<path d="M559 180h140" />
+<path d="M559 250h140" />
+<path d="M559 320h140" />
+<path d="M559 390h140" />
+<path d="M559 460h140" />
+<path d="M559 530h140" />
+</g>
+<g stroke="black" stroke-width="3">
+<path d="M700 35v10l-11 -5" stroke="none" fill="black" />
+<path d="M700 105v10l-11 -5" stroke="none" fill="black" />
+<path d="M700 175v10l-11 -5" stroke="none" fill="black" />
+<path d="M700 245v10l-11 -5" stroke="none" fill="black" />
+<path d="M700 315v10l-11 -5" stroke="none" fill="black" />
+<path d="M700 385v10l-11 -5" stroke="none" fill="black" />
+<path d="M700 455v10l-11 -5" stroke="none" fill="black" />
+<path d="M700 525v10l-11 -5" stroke="none" fill="black" />
+</g>
+<g stroke="green" stroke-width="3">
+<path d="M139 37v496" />
+<path d="M119 40h20" />
+</g>
+<g>
+<path d="M139 40h30" />
+<path d="M139 110h30" />
+<path d="M139 180h30" />
+<path d="M139 250h30" />
+<path d="M139 320h30" />
+<path d="M139 390h30" />
+<path d="M139 460h30" />
+<path d="M139 530h30" />
+</g>
+<g stroke="black" stroke-width="3">
+<path d="M138 35v10l11 -5" stroke="none" fill="black" />
+<path d="M138 105v10l11 -5" stroke="none" fill="black" />
+<path d="M138 175v10l11 -5" stroke="none" fill="black" />
+<path d="M138 245v10l11 -5" stroke="none" fill="black" />
+<path d="M138 315v10l11 -5" stroke="none" fill="black" />
+<path d="M138 385v10l11 -5" stroke="none" fill="black" />
+<path d="M138 455v10l11 -5" stroke="none" fill="black" />
+<path d="M138 525v10l11 -5" stroke="none" fill="black" />
+</g>
+<g>
+<path d="M399 40h110" />
+<path d="M399 110h110" />
+<path d="M399 180h110" />
+<path d="M399 250h110" />
+<path d="M399 320h110" />
+<path d="M399 390h110" />
+<path d="M399 460h110" />
+<path d="M399 530h110" />
+<path d="M219 40h130" />
+<path d="M219 110h130" />
+<path d="M219 180h130" />
+<path d="M219 250h130" />
+<path d="M219 320h130" />
+<path d="M219 390h130" />
+<path d="M219 460h130" />
+<path d="M219 530h130" />
+<text x="694" y="39" fill="black" stroke-width="0" font-size="8" text-anchor="end">0</text>
+<text x="694" y="109" fill="black" stroke-width="0" font-size="8" text-anchor="end">1</text>
+<text x="694" y="179" fill="black" stroke-width="0" font-size="8" text-anchor="end">2</text>
+<text x="694" y="249" fill="black" stroke-width="0" font-size="8" text-anchor="end">3</text>
+<text x="694" y="319" fill="black" stroke-width="0" font-size="8" text-anchor="end">4</text>
+<text x="694" y="389" fill="black" stroke-width="0" font-size="8" text-anchor="end">5</text>
+<text x="694" y="459" fill="black" stroke-width="0" font-size="8" text-anchor="end">6</text>
+<text x="694" y="529" fill="black" stroke-width="0" font-size="8" text-anchor="end">7</text>
+<text x="145" y="39" fill="black" stroke-width="0" font-size="8">0</text>
+<text x="145" y="109" fill="black" stroke-width="0" font-size="8">1</text>
+<text x="145" y="179" fill="black" stroke-width="0" font-size="8">2</text>
+<text x="145" y="249" fill="black" stroke-width="0" font-size="8">3</text>
+<text x="145" y="319" fill="black" stroke-width="0" font-size="8">4</text>
+<text x="145" y="389" fill="black" stroke-width="0" font-size="8">5</text>
+<text x="145" y="459" fill="black" stroke-width="0" font-size="8">6</text>
+<text x="145" y="529" fill="black" stroke-width="0" font-size="8">7</text>
+</g>
+</g>
+</svg>
