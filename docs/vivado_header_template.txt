@@ -1,0 +1,17 @@
+//--------------------------------------------------------------------------------
+// Company:       CSD Lab6
+// Engineer:      Ring Oscillator Project
+//
+// Create Date:   2026-06-06
+// Design Name:   <module_name>
+// Module Name:   <module_name>
+// Project Name:  ring_oscilator_prj
+// Target Devices: Xilinx Arty S7-50 (XC7S50-CSGA324)
+// Tool Versions: Vivado 2018.3
+// Description:   <one-line purpose>
+//
+// Dependencies:  <list parent modules>
+//
+// Revision:
+// Revision 0.01 - File Created
+//--------------------------------------------------------------------------------
