@@ -2,77 +2,10 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>aring_osc — Vivado BD PDF viewer</title>
-  <style>
-    :root { color-scheme: dark; }
-    body { margin:0; font-family: Inter, Segoe UI, Arial, sans-serif; background:#0b1020; color:#e7ecff; }
-    .app { display:grid; grid-template-columns: 360px 1fr; height:100vh; }
-    .side { background:#121a2f; border-right:1px solid #27304a; padding:14px; overflow:auto; }
-    .main { position:relative; overflow:auto; }
-    h1 { margin:0 0 8px; font-size:18px; }
-    .hint { font-size:12px; color:#cbd5ff; line-height:1.45; margin-bottom:10px; }
-    code { background:#1a2340; border:1px solid #32416e; padding:2px 6px; border-radius:6px; }
-    select, input, button { width:100%; margin-top:8px; padding:10px; border-radius:10px; border:1px solid #2c3655; background:#10172a; color:#e7ecff; }
-    button { cursor:pointer; background:#2d3f7a; border-color:#4860a8; }
-    button:hover { background:#39539a; }
-    .row { display:grid; grid-template-columns: 1fr 1fr; gap:8px; }
-    .canvasWrap { position:relative; padding:14px; }
-    canvas { background:#0b1020; border:1px solid #27304a; border-radius:12px; }
-    .overlay { position:absolute; left:14px; top:14px; }
-    .box { position:absolute; border:2px solid rgba(126,160,255,.9); border-radius:8px; background: rgba(40,70,130,.12); cursor:pointer; }
-    .box:hover { background: rgba(126,160,255,.16); }
-    .tip { position:fixed; display:none; max-width:420px; background:#10172a; border:1px solid #4860a8; border-radius:10px; padding:8px 10px; font-size:12px; box-shadow:0 8px 24px rgba(0,0,0,.35); pointer-events:none; }
-    .tip .t { font-weight:700; margin-bottom:3px; }
-    .tip .d { color:#cbd5ff; line-height:1.35; }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
-  </style>
+  <meta http-equiv="refresh" content="0; url=../vivado_schematics/index.html" />
+  <title>Przekierowanie…</title>
 </head>
 <body>
-  <div class="app">
-    <aside class="side">
-      <h1>Vivado BD → interaktywny PDF</h1>
-      <div class="hint">
-        Wgraj tu export z Vivado GUI (np. <code>mb_ro_system.pdf</code>) i dodaj mapę klików w <code>maps.js</code>.
-        Klik w blok przenosi do kolejnego PDF, hover pokazuje opis.
-      </div>
-
-      <label class="kbd">PDF</label>
-      <select id="pdfSel"></select>
-
-      <div class="row">
-        <button id="prev">←</button>
-        <button id="next">→</button>
-      </div>
-
-      <label class="kbd">Strona</label>
-      <input id="page" type="number" min="1" value="1" />
-
-      <div class="hint" style="margin-top:10px;">
-        Jeśli chcesz łatwo dobrać współrzędne prostokątów: otwórz DevTools i włącz tryb „pick”.
-      </div>
-      <button id="pick">Pick (rysuj prostokąt)</button>
-      <div class="hint">
-        Podczas pick: kliknij i przeciągnij na PDF, a na konsoli dostaniesz gotowy wpis do <code>maps.js</code>.
-      </div>
-    </aside>
-
-    <main class="main">
-      <div class="canvasWrap">
-        <canvas id="c"></canvas>
-        <div id="overlay" class="overlay"></div>
-      </div>
-    </main>
-  </div>
-
-  <div id="tip" class="tip"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/build/pdf.min.js"></script>
-  <script src="./maps.js"></script>
-  <script>
-    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/build/pdf.worker.min.js";
-  </script>
-  <script src="./viewer.js"></script>
+  <p>Schematy sa w formacie SVG: <a href="../vivado_schematics/index.html">vivado_schematics/index.html</a></p>
 </body>
 </html>
-

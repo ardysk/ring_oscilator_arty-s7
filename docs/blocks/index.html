@@ -1,0 +1,311 @@
+﻿<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>aring_osc V1 — Interaktywne diagramy bloków</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      background: #0b1020;
+      color: #e7ecff;
+    }
+    .app {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      min-height: 100vh;
+    }
+    .sidebar {
+      border-right: 1px solid #27304a;
+      background: #121a2f;
+      padding: 16px;
+      overflow-y: auto;
+    }
+    .content {
+      padding: 18px;
+      overflow-x: auto;
+    }
+    h1 { font-size: 18px; margin: 0 0 8px; }
+    h2 { font-size: 16px; margin: 12px 0 8px; }
+    h3 { font-size: 14px; margin: 12px 0 6px; color: #9eb0ff; }
+    p, li { font-size: 13px; line-height: 1.5; }
+    code {
+      background: #1a2340;
+      border: 1px solid #32416e;
+      padding: 2px 6px;
+      border-radius: 6px;
+      color: #d9e2ff;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    button {
+      background: #2d3f7a;
+      color: #eef2ff;
+      border: 1px solid #4860a8;
+      border-radius: 8px;
+      padding: 7px 10px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    button:hover { background: #39539a; }
+    button.secondary { background: #1f2b52; }
+    .hint {
+      font-size: 12px;
+      color: #9eb0ff;
+      margin: 0 0 10px;
+    }
+    .meta {
+      background: #121a2f;
+      border: 1px solid #2c3655;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+    .ports {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .panel {
+      border: 1px solid #2c3655;
+      border-radius: 8px;
+      background: #10172a;
+      padding: 8px;
+      min-height: 72px;
+    }
+    ul { margin: 6px 0 0 16px; padding: 0; }
+    .mermaid-wrap {
+      border: 1px solid #33406a;
+      border-radius: 12px;
+      background: #121a2f;
+      padding: 12px;
+      min-height: 380px;
+    }
+    .crumbs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .crumb {
+      font-size: 12px;
+      background: #192344;
+      border: 1px solid #3a4a80;
+      border-radius: 999px;
+      padding: 4px 10px;
+      cursor: pointer;
+    }
+    .list button {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .active { outline: 2px solid #7ea0ff; }
+    .small { font-size: 12px; color: #9eb0ff; }
+    .err {
+      color: #ffb4b4;
+      background: #3a1b29;
+      border: 1px solid #8d3f57;
+      padding: 8px;
+      border-radius: 8px;
+      display: none;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h1>aring_osc V1</h1>
+      <p class="hint">Interaktywny widok bloków jak w Vivado BD. Klikaj bloki na diagramie albo listę niżej.</p>
+      <div class="topbar">
+        <button id="goSystem">Top: mb_ro_system</button>
+        <button id="goPL" class="secondary">Top: ro_top_arty_axi</button>
+      </div>
+      <h3>Wszystkie bloki</h3>
+      <div id="blockList" class="list"></div>
+      <p class="small">Plik: <code>docs/blocks/index.html</code><br/>Dane: <code>docs/blocks/blocks-data.js</code></p>
+    </aside>
+
+    <main class="content">
+      <div id="error" class="err"></div>
+      <div class="crumbs" id="crumbs"></div>
+      <div class="meta">
+        <h2 id="title"></h2>
+        <p id="subtitle" class="small"></p>
+        <p id="desc"></p>
+        <p class="small">Źródło RTL/BD: <code id="file"></code></p>
+        <div class="ports">
+          <div class="panel">
+            <strong>Wejścia</strong>
+            <ul id="inPorts"></ul>
+          </div>
+          <div class="panel">
+            <strong>Wyjścia</strong>
+            <ul id="outPorts"></ul>
+          </div>
+        </div>
+        <div class="panel" id="regsPanel" style="margin-top:10px; display:none;">
+          <strong>Najważniejsze rejestry</strong>
+          <ul id="regs"></ul>
+        </div>
+      </div>
+
+      <div class="mermaid-wrap">
+        <div id="diagram"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="./blocks-data.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'loose',
+      theme: 'dark',
+      flowchart: { htmlLabels: true, curve: 'basis' }
+    });
+
+    const blocks = window.BLOCKS || {};
+    const blockClicks = window.BLOCK_CLICKS || {};
+    let current = 'system';
+    let history = ['system'];
+
+    const el = {
+      title: document.getElementById('title'),
+      subtitle: document.getElementById('subtitle'),
+      desc: document.getElementById('desc'),
+      file: document.getElementById('file'),
+      inPorts: document.getElementById('inPorts'),
+      outPorts: document.getElementById('outPorts'),
+      regs: document.getElementById('regs'),
+      regsPanel: document.getElementById('regsPanel'),
+      diagram: document.getElementById('diagram'),
+      crumbs: document.getElementById('crumbs'),
+      blockList: document.getElementById('blockList'),
+      error: document.getElementById('error')
+    };
+
+    function setError(msg) {
+      if (!msg) {
+        el.error.style.display = 'none';
+        el.error.textContent = '';
+        return;
+      }
+      el.error.style.display = 'block';
+      el.error.textContent = msg;
+    }
+
+    function liList(target, arr) {
+      target.innerHTML = '';
+      (arr || []).forEach(v => {
+        const li = document.createElement('li');
+        li.textContent = v;
+        target.appendChild(li);
+      });
+    }
+
+    function renderCrumbs() {
+      el.crumbs.innerHTML = '';
+      history.forEach((id, idx) => {
+        const b = blocks[id];
+        const c = document.createElement('span');
+        c.className = 'crumb';
+        c.textContent = b ? b.title : id;
+        c.onclick = () => {
+          history = history.slice(0, idx + 1);
+          render(id, false);
+        };
+        el.crumbs.appendChild(c);
+      });
+    }
+
+    function decorateClickableNodes(blockId) {
+      const mapping = blockClicks[blockId] || {};
+      Object.keys(mapping).forEach(key => {
+        // Mermaid lowercases node ids in DOM
+        const node = document.getElementById(key) || document.getElementById(key.toLowerCase()) || document.getElementById(key.toUpperCase());
+        if (!node) return;
+        node.style.cursor = 'pointer';
+        node.style.filter = 'drop-shadow(0 0 4px rgba(150,190,255,.35))';
+        node.onclick = () => {
+          const next = mapping[key];
+          if (!blocks[next]) return;
+          history.push(next);
+          render(next, false);
+        };
+      });
+    }
+
+    async function render(blockId, resetHistory = true) {
+      setError('');
+      const b = blocks[blockId];
+      if (!b) {
+        setError('Nie znaleziono bloku: ' + blockId);
+        return;
+      }
+      current = blockId;
+      if (resetHistory) history = [blockId];
+      renderCrumbs();
+
+      el.title.textContent = b.title;
+      el.subtitle.textContent = b.subtitle || '';
+      el.desc.textContent = b.description || '';
+      el.file.textContent = b.file || '';
+      liList(el.inPorts, b.ports?.in || []);
+      liList(el.outPorts, b.ports?.out || []);
+
+      if (b.registers && b.registers.length) {
+        el.regsPanel.style.display = 'block';
+        liList(el.regs, b.registers);
+      } else {
+        el.regsPanel.style.display = 'none';
+      }
+
+      const id = 'm_' + blockId + '_' + Date.now();
+      try {
+        const { svg } = await mermaid.render(id, b.diagram || 'flowchart TB\nA[brak diagramu]');
+        el.diagram.innerHTML = svg;
+        decorateClickableNodes(blockId);
+      } catch (e) {
+        el.diagram.innerHTML = '';
+        setError('Błąd renderowania Mermaid: ' + (e?.message || e));
+      }
+
+      document.querySelectorAll('.list button').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.id === blockId);
+      });
+    }
+
+    function buildList() {
+      const entries = Object.entries(blocks)
+        .sort((a,b) => a[1].title.localeCompare(b[1].title, 'pl'));
+      entries.forEach(([id, b]) => {
+        const btn = document.createElement('button');
+        btn.textContent = b.title + ' — ' + (b.subtitle || id);
+        btn.dataset.id = id;
+        btn.onclick = () => {
+          history.push(id);
+          render(id, false);
+        };
+        el.blockList.appendChild(btn);
+      });
+    }
+
+    document.getElementById('goSystem').onclick = () => { history = ['system']; render('system', false); };
+    document.getElementById('goPL').onclick = () => { history = ['ro_top_arty_axi']; render('ro_top_arty_axi', false); };
+
+    buildList();
+    render('system');
+  </script>
+</body>
+</html>
