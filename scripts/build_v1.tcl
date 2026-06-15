@@ -5,7 +5,7 @@ open_project ring_oscilator_prj.xpr
 
 # Ensure new synthesizer RTL is in project
 set src_new [file normalize ring_oscilator_prj.srcs/sources_1/new]
-foreach sv {clk_ref_100mhz.sv ro_freq_gate_100m.sv ro_div32.sv ro_ring_prescale.sv ro_bank_prescale_mux.sv ro_freq_measure_scaled.sv ro_freq_measure.sv ro_freq_hz_calc.sv} {
+foreach sv {ro_ring_prescale.sv ro_bank_prescale_mux.sv ro_freq_measure.sv ro_freq_hz_calc.sv} {
   set p [file join $src_new $sv]
   if {[file exists $p] && [get_files -quiet [list $p]] eq ""} {
     add_files -norecurse $p
@@ -98,10 +98,8 @@ foreach {pat en} {
   }
 }
 
-# New RTL for 100 MHz gate + 32-bit div
 foreach tail {
-  clk_ref_100mhz.sv ro_freq_gate_100m.sv ro_div32.sv
-  ro_ring_prescale.sv ro_bank_prescale_mux.sv ro_freq_measure_scaled.sv
+  ro_ring_prescale.sv ro_bank_prescale_mux.sv
   ro_freq_measure.sv ro_freq_hz_calc.sv
 } {
   set ff [get_files -quiet *${tail}]

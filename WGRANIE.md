@@ -1,32 +1,45 @@
-# Szybkie wgrywanie (PowerShell)
+# Wgrywanie na płytkę
+
+## Wymagania
+
+- Digilent **Arty S7-50** pod USB (JTAG + UART)
+- **Vivado 2018.3** (`C:\Xilinx\Vivado\2018.3`)
+- Pliki w repo: `bitstreams/v1_uart.bit`, `firmware/ro_ring_app.elf`
+
+## PowerShell (zalecane)
 
 ```powershell
-cd C:\Users\HP\Downloads\csd_lab6\ring_oscilator_spartan7
+cd ring_oscilator_arty-s7
 .\scripts\flash_and_uart.ps1
 ```
 
-Git Bash:
+Inny port COM:
+
+```powershell
+.\scripts\flash_and_uart.ps1 -ComPort COM5
+```
+
+## Git Bash
 
 ```bash
 ./scripts/flash_and_uart.sh
+# COM_PORT=COM5 ./scripts/flash_and_uart.sh
 ```
 
-Wymagania:
-- Płytka Arty S7-50 pod USB (JTAG + UART)
-- Vivado 2018.3 (`C:\Xilinx\Vivado\2018.3`)
-- Pliki: `bitstreams/v1_uart.bit`, `firmware/ro_ring_app.elf`
-
-Po wgraniu: terminal **COM13**, **9600 8N1**, **SW0=ON**, komenda `HELP`.
-
-## Pełny rebuild bitstreamu
+## Tylko JTAG (bez testu UART)
 
 ```powershell
-.\scripts\build_bitstream.ps1
 .\scripts\flash_board.ps1
 ```
 
-## Tylko Tcl (xsdb)
+## Ręcznie (xsdb)
 
 ```powershell
 C:\Xilinx\Vivado\2018.3\bin\xsdb.bat scripts\program_v1.tcl
 ```
+
+## Po wgraniu
+
+1. **SW0 = ON**
+2. Terminal **9600 8N1** (np. COM13)
+3. `HELP` → `CLEAR` → `CAL` → `SET 1M`

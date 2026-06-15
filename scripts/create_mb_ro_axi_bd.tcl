@@ -101,7 +101,7 @@ apply_bd_automation -rule xilinx.com:bd_rule:axi4 \
   -config [list Master "/microblaze_0 (Periph)" Clk "Auto" ] \
   [get_bd_intf_pins ro_axi_0/S_AXI]
 
-# UART USB (115200) — stdout/printf na port COM w PC (Tera Term / Python)
+# UART USB (9600) — stdout/printf na port COM w PC (Tera Term / Python)
 create_bd_cell -type ip -vlnv xilinx.com:ip:axi_uartlite:2.0 axi_uartlite_0
 set_property -dict [list CONFIG.C_BAUDRATE {9600}] [get_bd_cells axi_uartlite_0]
 connect_bd_net [get_bd_ports clk_12mhz] [get_bd_pins axi_uartlite_0/s_axi_aclk]

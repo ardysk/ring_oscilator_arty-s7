@@ -1,4 +1,6 @@
-# Wersja 2 — Przyciski + DDS + ścieżka RO z buforem
+# Wersja 2 — Przyciski + DDS (ARCHIWUM)
+
+> **LEGACY** — nie jest aktywną wersją projektu. Dokumentacja użytkownika V1: [README.md](../../README.md).
 
 ## Cel
 

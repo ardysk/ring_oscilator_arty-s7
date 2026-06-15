@@ -1,4 +1,6 @@
-# Wersja 3 — TFT GC9A01 (RO + wyświetlacz zamiast samego terminala)
+# Wersja 3 — TFT GC9A01 (ARCHIWUM)
+
+> **LEGACY** — nie jest aktywną wersją projektu. Dokumentacja użytkownika V1: [README.md](../../README.md).
 
 ## Cel
 
