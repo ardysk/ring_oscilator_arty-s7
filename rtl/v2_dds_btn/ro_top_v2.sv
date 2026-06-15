@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Alternate top level combining button inputs, DDS, and a buffered RO measurement path.
+// Archived V2 laboratory variant; not built or programmed in the default V1 flow.
+// Demonstrates debounced frequency change without MicroBlaze UART control.
+
 `timescale 1ns / 1ps
 
 module ro_top_v2 #(

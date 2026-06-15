@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Programmable frequency divider that counts rising edges on the selected ring signal.
+// Generates a divided square wave; minimum division is two when half_edges equals one.
+// Sits on the output path so scope signals always pass through a divider in V1.
+
 `timescale 1ns / 1ps
 
 module ring_prog_toggle_div #(

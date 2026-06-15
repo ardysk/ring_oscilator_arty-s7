@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Synchronizes an asynchronous ring oscillator signal into the system clock domain.
+// Uses a multi-flop metastability buffer before edge counting or control logic.
+// Feeds ro_freq_measure and related blocks that operate on clk at 12 MHz.
+
 `timescale 1ns / 1ps
 
 module ro_async_to_ref_sync #(

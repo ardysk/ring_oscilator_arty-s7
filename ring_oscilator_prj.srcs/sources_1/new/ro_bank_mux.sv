@@ -1,21 +1,13 @@
-//--------------------------------------------------------------------------------
-// Company:       CSD Lab6
-// Engineer:      Ring Oscillator Project
-//
-// Create Date:   2026-06-06
-// Design Name:   ro_bank_mux
-// Module Name:   ro_bank_mux
-// Project Name:  ring_oscilator_prj
-// Target Devices: Xilinx Arty S7-50 (XC7S50-CSGA324)
-// Tool Versions: Vivado 2018.3
-// Description:   Multiplekser wyboru banku pierścienia — sterowanie z zewnątrz
-//                bez bezpośredniego dotykania pętli LUT każdego banku.
-//
-// Dependencies:  none
-//
-// Revision:
-// Revision 0.01 - File Created
-//--------------------------------------------------------------------------------
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Simple multiplexer that selects one of several ring bank outputs.
+// Legacy building block for early multi-bank tops and the V2 design.
+// Superseded in V1 by ro_multi_div_mux but kept for archival builds.
+
 `timescale 1ns / 1ps
 
 module ro_bank_mux #(

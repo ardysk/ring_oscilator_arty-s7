@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Direct digital synthesizer that produces a square wave from a phase accumulator MSB.
+// Accepts a frequency tuning word and system clock for the V2 audio-style generator.
+// Legacy module used only by ro_top_v2.
+
 `timescale 1ns / 1ps
 
 module dds_core #(

@@ -1,18 +1,13 @@
-//--------------------------------------------------------------------------------
-// Company:       CSD Lab6
-// Engineer:      Ring Oscillator Project
-//
-// Create Date:   2026-06-06
-// Design Name:   ro_top_v3_wrapper
-// Module Name:   ro_top_v3_wrapper
-// Project Name:  ring_oscilator_prj
-// Target Devices: Xilinx Arty S7-50 (XC7S50-CSGA324)
-// Tool Versions: Vivado 2018.3
-// Description:   Wrapper V3 bez MicroBlaze — AXI idle, reset aktywny.
-//
-// Revision:
-// Revision 0.01 - File Created
-//--------------------------------------------------------------------------------
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Verilog wrapper for ro_top_v3 used in Vivado block-design integration.
+// Exposes display and RO ports to the V3 experimental bitstream top.
+// Not used when building the default V1 UART bitstream.
+
 `timescale 1ns / 1ps
 
 module ro_top_v3_wrapper (

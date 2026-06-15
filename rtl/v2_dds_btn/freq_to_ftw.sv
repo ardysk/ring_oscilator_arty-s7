@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Converts a requested output frequency in hertz to a DDS frequency tuning word.
+// Uses fixed-point arithmetic with the configured system clock frequency.
+// Supporting block for the V2 button-controlled DDS top.
+
 `timescale 1ns / 1ps
 
 module freq_to_ftw #(

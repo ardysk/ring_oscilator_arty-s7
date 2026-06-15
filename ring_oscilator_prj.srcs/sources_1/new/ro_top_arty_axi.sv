@@ -1,4 +1,13 @@
-// Top Arty: 4 banki kalibrowane (3,4,5,10), 32-bit div, pomiar @ 12 MHz (~5 ms gate).
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Top-level Arty S7 design for V1: MicroBlaze AXI CSR plus sixteen RO banks.
+// Integrates measurement, divider mux, scope buffers, and SW0 ring enable gating.
+// Wrapped as a module reference inside the Vivado block design mb_ro_system.
+
 `timescale 1ns / 1ps
 
 module ro_top_arty_axi #(

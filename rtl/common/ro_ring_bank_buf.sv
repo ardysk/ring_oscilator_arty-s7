@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Places a global clock buffer on each ring bank output before muxing.
+// Isolates combinational RO loops from downstream load and routing delay.
+// One instance per bank in ro_multi_div_mux.
+
 `timescale 1ns / 1ps
 
 module ro_ring_bank_buf #(

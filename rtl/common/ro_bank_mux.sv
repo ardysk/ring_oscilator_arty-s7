@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Simple multiplexer that selects one of several ring bank outputs.
+// Legacy building block for early multi-bank tops and the V2 design.
+// Superseded in V1 by ro_multi_div_mux but kept for archival builds.
+
 `timescale 1ns / 1ps
 
 module ro_bank_mux #(

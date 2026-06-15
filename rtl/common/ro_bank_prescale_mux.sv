@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Selects one of several async prescaler depths based on the active RO bank index.
+// Outputs a scaled edge stream and a scale factor for firmware reconstruction.
+// Feeds the ring-frequency measurement path in ro_top_arty_axi.
+
 `timescale 1ns / 1ps
 
 module ro_bank_prescale_mux #(

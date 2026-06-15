@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Implements a tunable LUT-based ring oscillator for the high and mid-speed RO banks.
+// The tune_sel bus selects longer or shorter inverter paths to change the loop delay and output frequency.
+// Used inside ro_top for banks B1 through B11 in the V1 frequency synthesizer.
+
 `timescale 1ns / 1ps
 
 module ring_inverter_tunable #(

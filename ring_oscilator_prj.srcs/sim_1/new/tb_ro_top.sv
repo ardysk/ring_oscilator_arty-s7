@@ -1,6 +1,13 @@
-// Fast RTL testbench for ro_top — small gate window + compare tuning (0 vs max delays).
-// Gate-level / post-implementation: use tb_ro_top_zed unless you re-run impl with
-// keep_hierarchy on u_core in ro_top_zed and the netlist preserves RTL ro_top ports.
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Generic behavioral testbench for legacy ro_top connectivity and measurement.
+// Exercises ring enable, bank mux, and basic frequency gate completion.
+// Retained for gate-level and RTL regression in the Vivado sim_1 fileset.
+
 `timescale 1ns / 1ps
 
 module tb_ro_top;

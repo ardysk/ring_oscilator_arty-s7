@@ -1,18 +1,13 @@
-//--------------------------------------------------------------------------------
-// Company:       CSD Lab6
-// Engineer:      Ring Oscillator Project
-//
-// Create Date:   2026-06-06
-// Design Name:   tb_dds_core
-// Module Name:   tb_dds_core
-// Project Name:  ring_oscilator_prj
-// Target Devices: Simulation
-// Tool Versions: Vivado 2018.3
-// Description:   Testbench DDS — sprawdza okres przy zadanej częstotliwości.
-//
-// Revision:
-// Revision 0.01 - File Created
-//--------------------------------------------------------------------------------
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Simulation testbench for the DDS phase accumulator and square-wave output.
+// Applies several tuning words and observes output period on the waveform.
+// Used to validate the archived V2 generator before FPGA implementation.
+
 `timescale 1ns / 1ps
 
 module tb_dds_core;

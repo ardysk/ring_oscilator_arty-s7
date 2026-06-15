@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Top-level that adds GC9A01 TFT display support alongside the RO measurement path.
+// Archived V3 variant; display bring-up was not completed in the shipped V1 release.
+// Combines SPI display driver hooks with ring frequency status outputs.
+
 `timescale 1ns / 1ps
 
 module ro_top_v3 (

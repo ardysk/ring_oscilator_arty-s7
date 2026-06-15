@@ -1,18 +1,13 @@
-//--------------------------------------------------------------------------------
-// Company:       CSD Lab6
-// Engineer:      Ring Oscillator Project
-//
-// Create Date:   2026-06-06
-// Design Name:   tb_spi_master
-// Module Name:   tb_spi_master
-// Project Name:  ring_oscilator_prj
-// Target Devices: Simulation
-// Tool Versions: Vivado 2018.3
-// Description:   Testbench SPI master — transmisja bajtu 0xA5.
-//
-// Revision:
-// Revision 0.01 - File Created
-//--------------------------------------------------------------------------------
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Testbench that sends byte streams through spi_master and monitors SCK/MOSI.
+// Confirms CPOL/CPHA timing and transaction completion signaling.
+// Supports bring-up of the V3 display SPI interface in simulation.
+
 `timescale 1ns / 1ps
 
 module tb_spi_master;

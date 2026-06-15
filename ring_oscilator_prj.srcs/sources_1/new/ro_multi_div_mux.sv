@@ -1,4 +1,13 @@
-// BUFG → mux → div OUT; RING surowy + prescale tor pomiaru w top.
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Combines per-bank buffered ring outputs, target mapping, and the programmable divider.
+// Selects the active bank and drives both scope output and measurement taps.
+// Central output routing block between the sixteen rings and ro_sig_buf.
+
 `timescale 1ns / 1ps
 
 module ro_multi_div_mux #(

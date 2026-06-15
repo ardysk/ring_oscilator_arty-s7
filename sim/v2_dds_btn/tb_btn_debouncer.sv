@@ -1,18 +1,13 @@
-//--------------------------------------------------------------------------------
-// Company:       CSD Lab6
-// Engineer:      Ring Oscillator Project
-//
-// Create Date:   2026-06-06
-// Design Name:   tb_btn_debouncer
-// Module Name:   tb_btn_debouncer
-// Project Name:  ring_oscilator_prj
-// Target Devices: Simulation
-// Tool Versions: Vivado 2018.3
-// Description:   Testbench debouncera — symulacja drgań przycisku.
-//
-// Revision:
-// Revision 0.01 - File Created
-//--------------------------------------------------------------------------------
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Unit testbench for the btn_debouncer module with synthetic bounce waveforms.
+// Checks that only stable presses produce a single detected edge.
+// Supports regression of the V2 input path in XSim.
+
 `timescale 1ns / 1ps
 
 module tb_btn_debouncer;

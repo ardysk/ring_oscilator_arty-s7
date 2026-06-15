@@ -1,21 +1,13 @@
-//--------------------------------------------------------------------------------
-// Company:       CSD Lab6
-// Engineer:      Ring Oscillator Project
-//
-// Create Date:   2026-06-06
-// Design Name:   ro_output_buffer
-// Module Name:   ro_output_buffer
-// Project Name:  ring_oscilator_prj
-// Target Devices: Xilinx Arty S7-50 (XC7S50-CSGA324)
-// Tool Versions: Vivado 2018.3
-// Description:   Bufor wyjścia pierścienia — BUFGCE na sygnale po MUX/dzielniku.
-//                Nie dotyka pętli kombinacyjnej pierścienia; poprawia zbocza na pinie.
-//
-// Dependencies:  none (Xilinx BUFGCE primitive)
-//
-// Revision:
-// Revision 0.01 - File Created
-//--------------------------------------------------------------------------------
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Clock-enabled output buffer (BUFGCE) for gated RO or DDS paths.
+// Legacy helper retained for the V2 button/DDS variant top level.
+// Not used on the active V1 MicroBlaze UART code path.
+
 `timescale 1ns / 1ps
 
 module ro_output_buffer (

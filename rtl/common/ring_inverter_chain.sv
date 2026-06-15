@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Implements a fixed-length chain of LUT inverters forming a slow ring oscillator.
+// Provides stable low-frequency sources for banks B12 through B16 without software tuning.
+// Instantiated in ro_top together with an optional output prescaler.
+
 `timescale 1ns / 1ps
 
 module ring_inverter_chain #(

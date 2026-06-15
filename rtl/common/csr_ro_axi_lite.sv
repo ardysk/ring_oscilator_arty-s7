@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// AXI4-Lite slave that maps MicroBlaze register accesses to RO control signals.
+// Handles ro_en, bank select, tune word, divider, measurement arm, and status flags.
+// Bridges the firmware in sw/v1_uart to the programmable logic of ro_top_arty_axi.
+
 `timescale 1ns / 1ps
 
 module csr_ro_axi_lite #(

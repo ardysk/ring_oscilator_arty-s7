@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// SPI mode-0 master with programmable clock division for display and peripheral IO.
+// Shifts one byte per transaction and handshakes with busy/done status.
+// Used by gc9a01_driver in the V3 TFT experimental design.
+
 `timescale 1ns / 1ps
 
 module spi_master #(

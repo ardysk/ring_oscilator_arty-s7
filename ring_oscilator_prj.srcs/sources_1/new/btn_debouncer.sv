@@ -1,21 +1,13 @@
-//--------------------------------------------------------------------------------
-// Company:       CSD Lab6
-// Engineer:      Ring Oscillator Project
-//
-// Create Date:   2026-06-06
-// Design Name:   btn_debouncer
-// Module Name:   btn_debouncer
-// Project Name:  ring_oscilator_prj
-// Target Devices: Xilinx Arty S7-50 (XC7S50-CSGA324)
-// Tool Versions: Vivado 2018.3
-// Description:   Synchroniczny debouncer przycisku — filtruje drgania mechaniczne
-//                zanim sygnał trafi do logiki wyboru częstotliwości (V2).
-//
-// Dependencies:  none
-//
-// Revision:
-// Revision 0.01 - File Created
-//--------------------------------------------------------------------------------
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Debounces a mechanical button input and detects stable pressed and release edges.
+// Runs synchronously in the board clock domain with programmable counter width.
+// Used by the V2 DDS/button demonstrator, not by the V1 UART firmware flow.
+
 `timescale 1ns / 1ps
 
 module btn_debouncer #(

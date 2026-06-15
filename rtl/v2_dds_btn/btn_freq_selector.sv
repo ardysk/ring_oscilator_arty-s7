@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Interprets debounced up, down, and measure buttons into target frequency changes.
+// Maintains the selected hertz value presented to the DDS and display logic.
+// Part of the archived V2 DDS demonstration design.
+
 `timescale 1ns / 1ps
 
 module btn_freq_selector #(

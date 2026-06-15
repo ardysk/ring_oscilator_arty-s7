@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Controller for the GC9A01 round TFT display over SPI (240x240).
+// Handles reset, initialization sequence, and drawing measured frequency text.
+// Part of the archived V3 TFT branch only.
+
 `timescale 1ns / 1ps
 
 module gc9a01_driver #(

@@ -1,6 +1,12 @@
-// Inverter ring with NAND enable: when en=1 the loop has an odd number of
-// inversions (parameter NUM_STAGES must be ODD, >= 3).
-// Symulacja: ten sam kod co synteza (assign bez opóźnień #).
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Implements a fixed-length chain of LUT inverters forming a slow ring oscillator.
+// Provides stable low-frequency sources for banks B12 through B16 without software tuning.
+// Instantiated in ro_top together with an optional output prescaler.
 
 `timescale 1ns / 1ps
 

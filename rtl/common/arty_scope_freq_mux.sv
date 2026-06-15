@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// High-speed observation mux that taps ring or output signals for oscilloscope pins.
+// Uses MMCM multiplication to improve visibility of fast asynchronous waveforms on JA.
+// Instantiated twice in ro_top_arty_axi for divided output and raw ring probes.
+
 `timescale 1ns / 1ps
 
 module arty_scope_freq_mux (

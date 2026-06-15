@@ -1,5 +1,12 @@
-// Plain-Verilog wrapper for Block Design references (Vivado 2018.3 rejects SV tops in BD Add Module).
-// Instantiates ro_top_arty_axi.sv. AXI inferred as interface "S_AXI" for connection automation.
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Verilog wrapper that exposes ro_top_arty_axi ports for Vivado block-design automation.
+// Renames the AXI slave interface to S_AXI for connection to microblaze_0_axi_periph.
+// Required module reference (mref) entry for the custom RO IP in mb_ro_system.bd.
 
 `timescale 1 ns / 1 ps
 

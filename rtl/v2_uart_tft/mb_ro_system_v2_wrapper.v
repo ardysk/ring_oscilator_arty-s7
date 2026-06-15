@@ -1,4 +1,13 @@
-// V2 top: MicroBlaze UART synthesizer (jak master) + GC9A01 na PMOD JD.
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Block-design wrapper for the experimental V2 UART plus TFT system image.
+// Archived netlist shell; the repository default programs V1 mb_ro_system_wrapper instead.
+// Kept for reference when rebuilding the TFT branch locally.
+
 `timescale 1ns / 1ps
 
 module mb_ro_system_v2_wrapper (

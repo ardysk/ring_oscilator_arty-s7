@@ -1,14 +1,12 @@
-// Symulacja: przemiatanie kodów ro_tune_sel na surowym `ro_top`, pomiary z `ro_freq_measure`,
-// szacunkowe_f_MHz = meas_edge_count * f_clk / (2 * meas_gate_cycles).
-//
-// UWAGI (ważne):
-// — Pierścień RTL to ta sama logika co po syntezie (bez opóźnień #): w XSim `ro_out` może zostać X/Z
-//   (pętla zero‑delay). Pomiar (`ro_freq_measure`) i tabela mają sens przy stabilnym „logicznym” przebiegu —
-//   w razie X w całym przemiataj porównaj wynik z syntezą / post‑synth sim albo włącz transport delay w ustawieniach projektu symulacji.
-// — Domyślnie przemiata 64 kodów (0..63); zmiana: początek `initial` (sweep_lim) lub w XSim/elab opcja typu `+sweep=256`.
-//
-// Uruchomienie (jak run_sim.tcl, ale zmienia Top):
-//   source scripts/run_sim_tune_sweep.tcl
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Sweep testbench that steps tune_sel across the full range for one RO bank.
+// Records edge counts or frequency estimates to characterize tuning monotonicity.
+// Used offline to refine presets in gen_ro_presets.py.
 
 `timescale 1ns / 1ps
 

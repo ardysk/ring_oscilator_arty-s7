@@ -1,4 +1,13 @@
-// TARGET [kHz]: bank_auto + div. Dla kHz wymuszamy wolne banki (14..15).
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Maps a target frequency in kilohertz to a ring bank and divider setting.
+// Searches calibrated or nominal bank/d divider pairs to minimize frequency error.
+// Used by ro_multi_div_mux when bank and divider are in automatic mode.
+
 `timescale 1ns / 1ps
 
 module ro_target_map #(

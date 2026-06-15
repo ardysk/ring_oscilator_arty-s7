@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Core ring-oscillator bank array: sixteen generate blocks with tunable or chain rings.
+// Selects one bank onto ro_out and optionally attaches local frequency measurement.
+// Defines bank topology, tail lengths, and chain stage counts for the V1 synthesizer.
+
 `timescale 1ns / 1ps
 
 module ro_top #(

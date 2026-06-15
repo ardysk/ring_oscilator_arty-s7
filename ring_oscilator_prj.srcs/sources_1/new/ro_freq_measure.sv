@@ -1,4 +1,13 @@
-// Pomiar f: 4-st. sync + detekcja narastających (mniej glitche metastabilności).
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Gates and counts edges on a (possibly prescaled) ring or output signal.
+// Runs entirely in the 12 MHz reference domain with programmable gate length.
+// Exposes meas_busy, meas_done, edge count, and calculated frequency to the AXI CSR block.
+
 `timescale 1ns / 1ps
 
 module ro_freq_measure #(

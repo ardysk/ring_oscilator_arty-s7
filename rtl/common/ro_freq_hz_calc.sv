@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Computes output frequency in hertz from a gated edge count and reference clock.
+// Implements f = edges * f_ref / (2 * gate_cycles) with optional scaling.
+// Instantiated inside ro_freq_measure for hardware frequency readout.
+
 `timescale 1ns / 1ps
 
 module ro_freq_hz_calc #(

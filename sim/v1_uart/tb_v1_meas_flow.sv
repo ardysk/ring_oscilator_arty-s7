@@ -1,18 +1,13 @@
-//--------------------------------------------------------------------------------
-// Company:       CSD Lab6
-// Engineer:      Ring Oscillator Project
-//
-// Create Date:   2026-06-06
-// Design Name:   tb_v1_meas_flow
-// Module Name:   tb_v1_meas_flow
-// Project Name:  ring_oscilator_prj
-// Target Devices: Simulation
-// Tool Versions: Vivado 2018.3
-// Description:   Testbench przepływu pomiaru V1 — FSM ro_freq_measure + syntetyczne RO.
-//
-// Revision:
-// Revision 0.01 - File Created
-//--------------------------------------------------------------------------------
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Self-checking testbench for V1 ring measurement and divider behavior.
+// Stimulates bank select, tune, and measurement arm sequences in simulation.
+// Verifies edge counting and frequency reconstruction against expected ranges.
+
 `timescale 1ns / 1ps
 
 module tb_v1_meas_flow;

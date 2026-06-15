@@ -1,3 +1,13 @@
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Asynchronous prescaler that divides a fast ring output before frequency measurement.
+// Reduces edge rate seen by the 12 MHz counter to avoid aliasing on very fast rings.
+// Used on slow chain banks and inside ro_bank_prescale_mux per bank class.
+
 `timescale 1ns / 1ps
 
 module ro_ring_prescale #(

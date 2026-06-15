@@ -1,12 +1,12 @@
-// Tunable inverter ring: kombinacyjna pętla ze sprzężeniem zwrotnym (bez wejścia sys_clk) —
-// faktyczny „asynchroniczny zegar” ROSC dla labu jest tutaj realizowany przez propagacje w LUT.
-// NAND enable zamyka pętle (en=0 → mid=1); każdy segment mux: bypass lub dwa invertory LUT.
-// MUX+LUTH always w torze → narzut MUX podobny dla każdej kombinacji; różnica to 0 vs 2 inv.
-// NUM_TAIL_INVERTERS must be even (0,2,…) so total inversions around loop stay odd.
-//
-// Symulacja BEH prawach zachowuje ten sam opis co synteza (czyste assign, bez #(…)).
-// Zero-opóźnieniowa pętla kombinacyjna może na XSim pozostawić ro_out w stanie X/Z — wtedy
-// włącz w projekcie symulacji TransportPathDelay/IntDelay (jak w .xpr) albo akceptuj „synteza = prawda”.
+// =============================================================================
+// Projekt SDUP — aring_osc
+// A. Kowalczyk, K. Skalka
+// Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
+// =============================================================================
+
+// Implements a tunable LUT-based ring oscillator for the high and mid-speed RO banks.
+// The tune_sel bus selects longer or shorter inverter paths to change the loop delay and output frequency.
+// Used inside ro_top for banks B1 through B11 in the V1 frequency synthesizer.
 
 `timescale 1ns / 1ps
 
