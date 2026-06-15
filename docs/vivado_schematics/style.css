@@ -1,92 +1,119 @@
-/* Simple Vivado-like dark viewer */
-:root { color-scheme: dark; }
-body {
+* { box-sizing: border-box; }
+html, body {
   margin: 0;
-  font-family: Inter, Segoe UI, Arial, sans-serif;
-  background: #0b1020;
-  color: #e7ecff;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 360px 1fr;
+  height: 100%;
+  font-family: Segoe UI, Arial, sans-serif;
+  background: #e8e8e8;
+  overflow: hidden;
+}
+body {
+  display: flex;
+  flex-direction: column;
 }
 
-.sidebar {
-  border-right: 1px solid #27304a;
-  background: #121a2f;
-  padding: 14px;
-  overflow: auto;
-}
-.brand .title { font-size: 18px; font-weight: 700; }
-.brand .subtitle { font-size: 12px; color: #9eb0ff; margin-top: 2px; }
-.hint { margin-top: 10px; font-size: 12px; color: #cbd5ff; line-height: 1.45; }
-code { background:#1a2340; border:1px solid #32416e; padding:2px 6px; border-radius:6px; }
-
-.controls { display:flex; gap:8px; margin-top: 10px; flex-wrap:wrap; }
-button {
-  background: #2d3f7a;
-  color: #eef2ff;
-  border: 1px solid #4860a8;
-  border-radius: 8px;
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   padding: 8px 10px;
-  cursor: pointer;
-  font-size: 12px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+  flex-shrink: 0;
 }
-button:hover { background:#39539a; }
-button.secondary { background:#1f2b52; }
-
-.search { margin-top: 10px; }
-input[type="search"]{
-  width:100%;
-  padding:10px 10px;
-  border-radius:10px;
-  border:1px solid #2c3655;
-  background:#10172a;
-  color:#e7ecff;
-  outline:none;
+.bar button.back {
+  min-width: 88px;
+  font-size: 13px;
 }
-
-.list { margin-top: 12px; display:flex; flex-direction:column; gap:6px; }
-.item {
-  padding: 8px 10px;
-  background:#10172a;
-  border:1px solid #2c3655;
-  border-radius: 10px;
+.bar button.back:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.bar select {
+  min-width: 220px;
+  padding: 6px 8px;
+  font-size: 13px;
+}
+.bar button {
+  min-width: 36px;
+  padding: 6px 10px;
+  font-size: 14px;
   cursor: pointer;
 }
-.item:hover { border-color:#7ea0ff; }
-.item .name { font-size: 13px; font-weight: 600; }
-.item .sub { font-size: 12px; color:#9eb0ff; margin-top:2px; }
-.item.active { outline: 2px solid #7ea0ff; }
-
-.main { overflow: hidden; display:grid; grid-template-rows: auto 1fr; }
-.meta {
-  border-bottom: 1px solid #27304a;
-  padding: 12px 14px;
-  background: #0f1730;
-  display:flex;
-  justify-content: space-between;
-  gap: 14px;
-  align-items: start;
+.spacer { flex: 1; }
+.crumbs { font-size: 12px; color: #555; }
+.crumbs a {
+  color: #06c;
+  cursor: pointer;
+  text-decoration: none;
 }
-.mTitle { font-size: 16px; font-weight: 700; }
-.mFile { font-size: 12px; color: #9eb0ff; margin-top: 2px; }
-.mDesc { font-size: 12px; line-height: 1.4; color:#d8e1ff; max-width: 56ch; }
+.crumbs a:hover { text-decoration: underline; }
+.zoomLbl {
+  font-size: 12px;
+  color: #555;
+  min-width: 48px;
+  text-align: right;
+}
 
-.stage { position: relative; overflow: auto; }
-.svgWrap { padding: 14px; min-height: 100%; }
-.svgWrap svg { background: #0b1020; border:1px solid #27304a; border-radius: 12px; }
+.children {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px 10px;
+  background: #fafafa;
+  border-bottom: 1px solid #ddd;
+  flex-shrink: 0;
+}
+.children button {
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  background: #fff;
+}
+.children button:hover {
+  border-color: #06c;
+  background: #f0f8ff;
+}
+.children .label {
+  font-size: 12px;
+  color: #666;
+  align-self: center;
+  margin-right: 4px;
+}
 
-.tooltip {
-  position: absolute;
-  background: #10172a;
-  border: 1px solid #4860a8;
-  border-radius: 10px;
+.viewport {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  cursor: grab;
+}
+.viewport.panning { cursor: grabbing; }
+
+.canvas {
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+/* Nie zmieniamy wygladu SVG z Vivado — tylko wyswietlamy */
+#svgHost svg {
+  display: block;
+  max-width: none;
+  max-height: none;
+}
+
+.tip {
+  position: fixed;
+  z-index: 100;
+  max-width: 360px;
   padding: 8px 10px;
   font-size: 12px;
-  max-width: 380px;
+  line-height: 1.35;
+  background: #fffff0;
+  border: 1px solid #999;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
   pointer-events: none;
-  box-shadow: 0 8px 24px rgba(0,0,0,.35);
 }
-.tooltip .t { font-weight: 700; margin-bottom: 3px; }
-.tooltip .d { color: #cbd5ff; line-height: 1.35; }
-
+.tip strong { display: block; margin-bottom: 2px; }

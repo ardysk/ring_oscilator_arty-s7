@@ -1,154 +1,427 @@
-const DB = window.VIVADO_SCHEM;
-const blocks = DB?.blocks || {};
-const clickMap = DB?.clickMap || {};
+(function () {
+  const DB = window.VIVADO_SCHEM || {};
+  const blocks = DB.blocks || {};
+  const hierarchy = DB.hierarchy || {};
+  const instanceMap = DB.instanceMap || {};
+  const ROOT = DB.root || "ro_top_arty_axi";
 
-const el = {
-  list: document.getElementById("list"),
-  q: document.getElementById("q"),
-  svgWrap: document.getElementById("svgWrap"),
-  tooltip: document.getElementById("tooltip"),
-  mTitle: document.getElementById("mTitle"),
-  mFile: document.getElementById("mFile"),
-  mDesc: document.getElementById("mDesc"),
-  btnTop: document.getElementById("btnTop"),
-  btnReset: document.getElementById("btnReset"),
-};
+  // Vivado: niebieskie prostokaty = moduly RTL, zolte = komorki LUT po syntezie
+  const MODULE_FILL = "#dfebf8";
 
-let current = "ro_top_arty_axi";
-let pan = { x: 0, y: 0, scale: 1 };
+  const el = {
+    back: document.getElementById("back"),
+    sel: document.getElementById("sel"),
+    crumbs: document.getElementById("crumbs"),
+    children: document.getElementById("children"),
+    viewport: document.getElementById("viewport"),
+    canvas: document.getElementById("canvas"),
+    svgHost: document.getElementById("svgHost"),
+    tip: document.getElementById("tip"),
+    zoomIn: document.getElementById("zoomIn"),
+    zoomOut: document.getElementById("zoomOut"),
+    fit: document.getElementById("fit"),
+    reset: document.getElementById("reset"),
+    zoomLbl: document.getElementById("zoomLbl"),
+  };
 
-function escapeHtml(s) {
-  return String(s)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll("\"", "&quot;");
-}
+  let current = ROOT;
+  let history = [ROOT];
+  let view = { x: 0, y: 0, scale: 1 };
+  let panCandidate = null;
+  let panning = false;
 
-function setActive(id) {
-  [...el.list.querySelectorAll(".item")].forEach(n => {
-    n.classList.toggle("active", n.dataset.id === id);
-  });
-}
-
-function buildList() {
-  const entries = Object.entries(blocks).sort((a, b) => a[0].localeCompare(b[0]));
-  el.list.innerHTML = "";
-  for (const [id, b] of entries) {
-    const item = document.createElement("div");
-    item.className = "item";
-    item.dataset.id = id;
-    item.innerHTML = `
-      <div class="name">${escapeHtml(id)}</div>
-      <div class="sub">${escapeHtml(b.subtitle || "")}</div>
-    `;
-    item.onclick = () => loadBlock(id);
-    el.list.appendChild(item);
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
   }
-}
 
-function applyFilter() {
-  const q = (el.q.value || "").toLowerCase().trim();
-  for (const node of el.list.querySelectorAll(".item")) {
-    const id = node.dataset.id.toLowerCase();
-    node.style.display = !q || id.includes(q) ? "" : "none";
+  function normalizeModule(name) {
+    return String(name || "")
+      .trim()
+      .replace(/__\d+$/, "");
   }
-}
 
-function tooltipShow(x, y, title, desc) {
-  el.tooltip.style.left = `${x + 12}px`;
-  el.tooltip.style.top = `${y + 12}px`;
-  el.tooltip.innerHTML = `<div class="t">${escapeHtml(title)}</div><div class="d">${escapeHtml(desc || "")}</div>`;
-  el.tooltip.style.display = "block";
-}
+  function resolveBlock(label) {
+    const t = String(label || "").trim();
+    if (!t || t.length < 3) return null;
 
-function tooltipHide() {
-  el.tooltip.style.display = "none";
-}
+    for (const [inst, id] of Object.entries(instanceMap)) {
+      if (
+        t === inst ||
+        t.startsWith(inst + "_") ||
+        t.endsWith("." + inst) ||
+        t.includes("." + inst + ".") ||
+        t.includes("." + inst)
+      ) {
+        if (blocks[id]) return id;
+      }
+    }
 
-function findBlockFromText(text) {
-  const t = (text || "").trim();
-  if (!t) return null;
+    const mod = normalizeModule(t);
+    if (blocks[mod]) return mod;
 
-  // Normalize: Vivado often shows module names verbatim in labels.
-  // Try direct match and also substring match over clickMap keys.
-  if (clickMap[t]) return clickMap[t];
-
-  for (const k of Object.keys(clickMap)) {
-    if (t.includes(k)) return clickMap[k];
+    // najdluzsze dopasowanie modulu (unikaj mylenia ro_top / ro_top_arty_axi)
+    let best = null;
+    for (const key of Object.keys(blocks)) {
+      if (t === key || t.includes(key)) {
+        if (!best || key.length > best.length) best = key;
+      }
+    }
+    return best;
   }
-  return null;
-}
 
-function wireSvgInteractions(svgRoot) {
-  // Best-effort: attach events to text nodes.
-  // Vivado schematic SVG contains lots of <text> elements; we use their textContent.
-  const texts = svgRoot.querySelectorAll("text");
-  texts.forEach(tx => {
-    const label = (tx.textContent || "").trim();
-    const target = findBlockFromText(label);
-    if (!target) return;
+  function childrenOf(parentId) {
+    return hierarchy[parentId] || [];
+  }
 
-    tx.style.cursor = "pointer";
-    tx.style.fill = "#bcd0ff";
+  function isChildOf(parentId, childId) {
+    return childrenOf(parentId).includes(childId);
+  }
 
-    tx.addEventListener("mousemove", (e) => {
-      const b = blocks[target];
-      tooltipShow(e.clientX, e.clientY, target, b?.desc || "");
+  function applyTransform() {
+    el.canvas.style.transform = `translate(${view.x}px, ${view.y}px) scale(${view.scale})`;
+    el.zoomLbl.textContent = `${Math.round(view.scale * 100)}%`;
+  }
+
+  function getSvgSize() {
+    const svg = el.svgHost.querySelector("svg");
+    if (!svg) return { w: 1, h: 1 };
+    const vb = svg.viewBox && svg.viewBox.baseVal;
+    if (vb && vb.width > 0 && vb.height > 0) {
+      return { w: vb.width, h: vb.height };
+    }
+    const r = svg.getBoundingClientRect();
+    return { w: r.width || 1, h: r.height || 1 };
+  }
+
+  function fitToView() {
+    const { w, h } = getSvgSize();
+    const vw = el.viewport.clientWidth;
+    const vh = el.viewport.clientHeight;
+    const pad = 24;
+    const scale = Math.min((vw - pad) / w, (vh - pad) / h, 4);
+    view.scale = Math.max(0.05, scale);
+    view.x = (vw - w * view.scale) / 2;
+    view.y = (vh - h * view.scale) / 2;
+    applyTransform();
+  }
+
+  function resetZoom() {
+    view.scale = 1;
+    view.x = 20;
+    view.y = 20;
+    applyTransform();
+  }
+
+  function zoomAt(factor, cx, cy) {
+    const rect = el.viewport.getBoundingClientRect();
+    const px = (cx ?? rect.left + rect.width / 2) - rect.left;
+    const py = (cy ?? rect.top + rect.height / 2) - rect.top;
+    const wx = (px - view.x) / view.scale;
+    const wy = (py - view.y) / view.scale;
+    view.scale = Math.min(8, Math.max(0.05, view.scale * factor));
+    view.x = px - wx * view.scale;
+    view.y = py - wy * view.scale;
+    applyTransform();
+  }
+
+  function showTip(x, y, title, desc, hint) {
+    el.tip.hidden = false;
+    el.tip.style.left = `${x + 14}px`;
+    el.tip.style.top = `${y + 14}px`;
+    const clickHint = hint ? `\n${hint}` : "";
+    el.tip.innerHTML =
+      `<strong>${esc(title)}</strong>${esc(desc || "")}${esc(clickHint)}`;
+  }
+
+  function hideTip() {
+    el.tip.hidden = true;
+  }
+
+  function updateBack() {
+    el.back.disabled = history.length <= 1;
+  }
+
+  function renderChildrenBar() {
+    const kids = childrenOf(current);
+    if (!kids.length) {
+      el.children.hidden = true;
+      el.children.innerHTML = "";
+      return;
+    }
+    el.children.hidden = false;
+    el.children.innerHTML =
+      `<span class="label">Podmoduly:</span>` +
+      kids
+        .map(
+          (id) =>
+            `<button type="button" data-child="${esc(id)}">${esc(id)}</button>`
+        )
+        .join("");
+    el.children.querySelectorAll("button").forEach((btn) => {
+      btn.addEventListener("click", () => drillDown(btn.dataset.child));
     });
-    tx.addEventListener("mouseleave", () => tooltipHide());
-    tx.addEventListener("click", () => loadBlock(target));
-  });
+  }
 
-  // Also show tooltip for any text (even if not clickable) on hover,
-  // but only if it's a known block id or key token.
-  texts.forEach(tx => {
-    const label = (tx.textContent || "").trim();
-    const target = findBlockFromText(label);
-    if (target) return;
-    if (!blocks[label]) return;
-    tx.addEventListener("mousemove", (e) => {
-      tooltipShow(e.clientX, e.clientY, label, blocks[label]?.desc || "");
+  function bindDrillable(node, targetId) {
+    if (!targetId || !blocks[targetId] || !isChildOf(current, targetId)) return;
+
+    const b = blocks[targetId];
+    node.setAttribute("data-drill", targetId);
+    node.style.cursor = "pointer";
+
+    const onEnter = (e) => {
+      showTip(
+        e.clientX,
+        e.clientY,
+        targetId,
+        b.desc,
+        "Kliknij, aby otworzyc schemat podmodulu"
+      );
+    };
+
+    node.addEventListener("mouseenter", onEnter);
+    node.addEventListener("mousemove", onEnter);
+    node.addEventListener("mouseleave", hideTip);
+    node.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      drillDown(targetId);
     });
-    tx.addEventListener("mouseleave", () => tooltipHide());
+  }
+
+  function findModuleTargetNear(pathEl, svg) {
+    const groups = [];
+    let g = pathEl.parentElement;
+    if (g) {
+      groups.push(g);
+      let s = g;
+      for (let i = 0; i < 6; i++) {
+        s = s.nextElementSibling;
+        if (!s) break;
+        groups.push(s);
+      }
+      let p = g.parentElement;
+      if (p && p !== svg) groups.push(p);
+    }
+
+    for (const group of groups) {
+      if (!group.querySelectorAll) continue;
+      for (const tx of group.querySelectorAll("text")) {
+        const t = resolveBlock(tx.textContent);
+        if (t && isChildOf(current, t)) return t;
+      }
+    }
+
+    try {
+      const bb = pathEl.getBBox();
+      const pad = 12;
+      for (const tx of svg.querySelectorAll("text")) {
+        const tb = tx.getBBox();
+        const cx = tb.x + tb.width / 2;
+        const cy = tb.y + tb.height / 2;
+        if (
+          cx >= bb.x - pad &&
+          cx <= bb.x + bb.width + pad &&
+          cy >= bb.y - pad &&
+          cy <= bb.y + bb.height + pad
+        ) {
+          const t = resolveBlock(tx.textContent);
+          if (t && isChildOf(current, t)) return t;
+        }
+      }
+    } catch (_) {
+      /* ignore */
+    }
+    return null;
+  }
+
+  function addHitRect(svg, bb, targetId) {
+    const NS = "http://www.w3.org/2000/svg";
+    let layer = svg.querySelector("#drill-hotspots");
+    if (!layer) {
+      layer = document.createElementNS(NS, "g");
+      layer.setAttribute("id", "drill-hotspots");
+      svg.appendChild(layer);
+    }
+    const r = document.createElementNS(NS, "rect");
+    r.setAttribute("x", bb.x - 4);
+    r.setAttribute("y", bb.y - 4);
+    r.setAttribute("width", bb.width + 8);
+    r.setAttribute("height", bb.height + 8);
+    r.setAttribute("fill", "transparent");
+    r.setAttribute("stroke", "none");
+    r.setAttribute("pointer-events", "all");
+    bindDrillable(r, targetId);
+    layer.appendChild(r);
+  }
+
+  function wireSvg(svg) {
+    const hooked = new Set();
+
+    function hookNode(node, targetId) {
+      if (!node || hooked.has(node)) return;
+      hooked.add(node);
+      bindDrillable(node, targetId);
+    }
+
+    // 1) Niebieskie bloki modulow RTL (#dfebf8) — glowna nawigacja hierarchii
+    svg.querySelectorAll("path").forEach((path) => {
+      const fill = (path.getAttribute("fill") || "").toLowerCase();
+      if (fill !== MODULE_FILL) return;
+
+      const target = findModuleTargetNear(path, svg);
+      if (!target) return;
+
+      hookNode(path, target);
+      try {
+        addHitRect(svg, path.getBBox(), target);
+      } catch (_) {
+        /* ignore */
+      }
+    });
+
+    // 2) Etykiety modulow (druga linia: dy="7.7")
+    svg.querySelectorAll('text[dy="7.7"]').forEach((modTx) => {
+      const target = resolveBlock(modTx.textContent);
+      if (!target || !isChildOf(current, target)) return;
+      hookNode(modTx, target);
+      const prev = modTx.previousElementSibling;
+      if (prev && prev.tagName === "text") hookNode(prev, target);
+    });
+
+    // 3) Nazwy instancji (u_core, u_map, ...)
+    svg.querySelectorAll("text").forEach((tx) => {
+      const target = resolveBlock(tx.textContent);
+      if (!target || !isChildOf(current, target)) return;
+      hookNode(tx, target);
+    });
+  }
+
+  async function loadSvg(blockId, url) {
+    let text = window.SVG_BUNDLE && window.SVG_BUNDLE[blockId];
+    if (!text) {
+      if (location.protocol === "file:") {
+        throw new Error(
+          "Brak svg-bundle.js — uruchom: python scripts/embed_vivado_svgs.py"
+        );
+      }
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("Brak pliku: " + url);
+      text = await res.text();
+    }
+    el.svgHost.innerHTML = text;
+    const svg = el.svgHost.querySelector("svg");
+    if (!svg) throw new Error("Brak <svg>");
+    wireSvg(svg);
+    requestAnimationFrame(fitToView);
+  }
+
+  function renderCrumbs() {
+    el.crumbs.innerHTML = history
+      .map((id, i) => {
+        const sep = i > 0 ? " / " : "";
+        if (i === history.length - 1) return sep + esc(id);
+        return `${sep}<a href="#" data-i="${i}">${esc(id)}</a>`;
+      })
+      .join("");
+    el.crumbs.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const i = Number(a.dataset.i);
+        history = history.slice(0, i + 1);
+        openBlock(history[i], false);
+      });
+    });
+  }
+
+  function buildSelect() {
+    const ids = Object.keys(blocks).sort();
+    el.sel.innerHTML = ids
+      .map((id) => `<option value="${esc(id)}">${esc(id)}</option>`)
+      .join("");
+    el.sel.value = current;
+  }
+
+  async function openBlock(id, pushHistory) {
+    const b = blocks[id];
+    if (!b) return;
+    current = id;
+    if (pushHistory !== false && history[history.length - 1] !== id) {
+      history.push(id);
+    }
+    el.sel.value = id;
+    renderCrumbs();
+    renderChildrenBar();
+    updateBack();
+    hideTip();
+    await loadSvg(id, b.svg);
+  }
+
+  function drillDown(id) {
+    if (!blocks[id] || !isChildOf(current, id)) return;
+    history.push(id);
+    openBlock(id, false);
+  }
+
+  function goBack() {
+    if (history.length <= 1) return;
+    history.pop();
+    openBlock(history[history.length - 1], false);
+  }
+
+  el.back.addEventListener("click", goBack);
+  el.zoomIn.addEventListener("click", () => zoomAt(1.25));
+  el.zoomOut.addEventListener("click", () => zoomAt(1 / 1.25));
+  el.fit.addEventListener("click", fitToView);
+  el.reset.addEventListener("click", resetZoom);
+
+  el.viewport.addEventListener(
+    "wheel",
+    (e) => {
+      e.preventDefault();
+      zoomAt(e.deltaY < 0 ? 1.12 : 1 / 1.12, e.clientX, e.clientY);
+    },
+    { passive: false }
+  );
+
+  // Pan tylko gdy nie klikamy w modul i gdy faktycznie przeciagniemy
+  el.viewport.addEventListener("mousedown", (e) => {
+    if (e.button !== 0) return;
+    if (e.target.closest("[data-drill]")) return;
+    panCandidate = { x: e.clientX, y: e.clientY, vx: view.x, vy: view.y };
+    panning = false;
   });
-}
 
-async function loadSvg(url) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Nie mogę wczytać SVG: ${url}`);
-  const text = await res.text();
-  // Inline SVG so we can attach events
-  el.svgWrap.innerHTML = text;
-  const svg = el.svgWrap.querySelector("svg");
-  if (!svg) throw new Error("Brak <svg> w pliku.");
-  wireSvgInteractions(svg);
-}
+  window.addEventListener("mousemove", (e) => {
+    if (!panCandidate) return;
+    const dx = e.clientX - panCandidate.x;
+    const dy = e.clientY - panCandidate.y;
+    if (!panning) {
+      if (Math.hypot(dx, dy) < 5) return;
+      panning = true;
+      el.viewport.classList.add("panning");
+    }
+    view.x = panCandidate.vx + dx;
+    view.y = panCandidate.vy + dy;
+    applyTransform();
+  });
 
-async function loadBlock(id) {
-  const b = blocks[id];
-  if (!b) return;
-  current = id;
+  window.addEventListener("mouseup", () => {
+    panCandidate = null;
+    panning = false;
+    el.viewport.classList.remove("panning");
+  });
 
-  el.mTitle.textContent = id + (b.subtitle ? ` — ${b.subtitle}` : "");
-  el.mFile.textContent = b.file ? `Źródło: ${b.file}` : "";
-  el.mDesc.textContent = b.desc || "";
-  setActive(id);
-  tooltipHide();
+  el.sel.addEventListener("change", () => {
+    history = [el.sel.value];
+    openBlock(el.sel.value, false);
+  });
 
-  await loadSvg(b.svg);
-}
+  window.addEventListener("resize", fitToView);
 
-el.q.addEventListener("input", applyFilter);
-el.btnTop.addEventListener("click", () => loadBlock("ro_top_arty_axi"));
-el.btnReset.addEventListener("click", () => {
-  // viewer is scroll-based; reset scroll
-  const st = document.querySelector(".stage");
-  st.scrollLeft = 0;
-  st.scrollTop = 0;
-});
-
-buildList();
-applyFilter();
-loadBlock(current);
-
+  buildSelect();
+  openBlock(ROOT, false);
+})();

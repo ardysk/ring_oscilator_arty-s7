@@ -3,50 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>aring_osc — Vivado schematics (interaktywne)</title>
+  <title>aring_osc — schematy Vivado (SVG)</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="title">aring_osc V1</div>
-      <div class="subtitle">Vivado schematics → klik/hover</div>
+  <header class="bar">
+    <button id="back" class="back" disabled title="Wroc do poprzedniego poziomu">&#8592; Wstecz</button>
+    <select id="sel" title="Schemat"></select>
+    <span id="crumbs" class="crumbs"></span>
+    <div class="spacer"></div>
+    <button id="zoomOut" title="Pomniejsz">−</button>
+    <button id="zoomIn" title="Powieksz">+</button>
+    <button id="fit" title="Dopasuj do okna">Dopasuj</button>
+    <button id="reset" title="100%">100%</button>
+    <span id="zoomLbl" class="zoomLbl">100%</span>
+  </header>
+
+  <div id="children" class="children" hidden></div>
+
+  <div id="viewport" class="viewport">
+    <div id="canvas" class="canvas">
+      <div id="svgHost"></div>
     </div>
+  </div>
 
-    <div class="hint">
-      To są <strong>schematy wygenerowane przez Vivado</strong> (SVG z <code>write_schematic</code>).
-      Klikaj nazwy bloków/instancji na schemacie albo wybierz z listy.
-    </div>
+  <div id="tip" class="tip" hidden></div>
 
-    <div class="controls">
-      <button id="btnTop">Top: ro_top_arty_axi</button>
-      <button id="btnReset" class="secondary">Reset widoku</button>
-    </div>
-
-    <div class="search">
-      <input id="q" type="search" placeholder="Szukaj bloku (np. ro_freq_measure)..." />
-    </div>
-
-    <div id="list" class="list"></div>
-  </aside>
-
-  <main class="main">
-    <div class="meta">
-      <div>
-        <div id="mTitle" class="mTitle"></div>
-        <div id="mFile" class="mFile"></div>
-      </div>
-      <div id="mDesc" class="mDesc"></div>
-    </div>
-
-    <div class="stage">
-      <div id="svgWrap" class="svgWrap"></div>
-      <div id="tooltip" class="tooltip" style="display:none;"></div>
-    </div>
-  </main>
-
+  <script src="./svg-bundle.js"></script>
   <script src="./data.js"></script>
   <script src="./viewer.js"></script>
 </body>
 </html>
-
