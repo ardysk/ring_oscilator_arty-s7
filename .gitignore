@@ -1,0 +1,70 @@
+# Vivado / Xilinx generated
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.log
+*.jou
+*.str
+*.backup.*
+usage_statistics_webtalk.*
+vivado*.log
+vivado*.jou
+vivado_pid*.str
+impl_complete.dcp
+
+# SDK / Eclipse metadata (keep source, ignore build noise)
+sdk_workspace/.metadata/
+sdk_workspace/.analytics/
+sdk_workspace/.sdk/
+sdk_workspace/**/Debug/
+sdk_workspace/**/Release/
+sdk_workspace/**/*.elf
+sdk_workspace/**/*.bit
+sdk_workspace/**/webtalk/
+sdk_workspace/RemoteSystemsTempFiles/
+sdk_workspace/mb_ro_hw/
+sdk_workspace/mb_ro_system_wrapper_hw_platform_0/
+sdk_workspace/ring_oscilator/
+sdk_workspace/ring_oscilator_bsp/
+sdk_workspace/ro_ring_app_bsp/
+
+# Bitstreams at repo root (tracked copies live in bitstreams/)
+*.bit
+!bitstreams/*.bit
+
+# Prebuilt firmware (tracked in firmware/)
+firmware/*.elf
+!firmware/ro_ring_app.elf
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Large exports
+export/
+Packages/
+
+# Local build logs
+build_*.log
+build_sw_*.log
+
+# Docs / assets not needed to rebuild
+schematic*.pdf
+*.jpg
+PLAN.md
+URUCHOMIENIE.txt
+examples/
+sim/results/
+sim/xsim_out/
+
+# Vivado IP generated (regenerate via generate_target)
+**/*_sim_netlist.v
+**/*_sim_netlist.vhdl
+**/*_stub.v
+**/*_stub.vhdl
+ring_oscilator_prj.srcs/sources_1/bd/mb_ro_system/ip/**/sim/
+ring_oscilator_prj.srcs/sources_1/bd/mb_ro_system/ip/**/synth/
