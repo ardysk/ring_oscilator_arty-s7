@@ -36,7 +36,7 @@ try {
         Write-Host $buf
         Write-Host "OK: UART dziala" -ForegroundColor Green
     } else {
-        Write-Warning "Brak odpowiedzi na $ComPort — sprawdz port i SW0=ON"
+        Write-Warning "Brak odpowiedzi na $ComPort - sprawdz port i SW0=ON"
     }
 } finally {
     if ($sp.IsOpen) { $sp.Close() }

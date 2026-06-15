@@ -3,3 +3,12 @@
 // A. Kowalczyk, K. Skalka
 // Ring Oscillator Synthesizer — Arty S7-50 (V1 UART)
 // =============================================================================
+//
+// Short English description of what this file contains and its role in the design.
+// Second sentence: main interfaces, parameters, or data flow.
+// Third sentence: where it is instantiated in the V1 (or archived V2/V3) hierarchy.
+//
+// Example (ring_inverter_tunable.sv):
+// Implements a tunable LUT-based ring oscillator for the high and mid-speed RO banks.
+// The tune_sel bus selects longer or shorter inverter paths to change the loop delay.
+// Used inside ro_top for banks B1 through B11 in the V1 frequency synthesizer.
